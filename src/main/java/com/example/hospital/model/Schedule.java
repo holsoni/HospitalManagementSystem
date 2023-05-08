@@ -20,9 +20,6 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private Date date;
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctorID;
     private Time startTime;
     private Time endTime;
     @OneToMany

@@ -1,0 +1,11 @@
+
+<div class="main" fxLayout="row" fxLayoutAlign="center">
+  <div *ngFor="let item of menu">
+    <a class="card" routerLink="{{item.route}}">
+      <div class="card-content" fxLayout="column" fxLayoutAlign="space-around center">
+        <img src="{{item.imgSrc}}" alt="">
+        <div class="card-text">{{item.name}}</div>
+      </div>
+    </a>
+  </div>
+</div>

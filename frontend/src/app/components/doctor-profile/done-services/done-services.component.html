@@ -1,0 +1,59 @@
+<div fxLayout="column" fxFlexOffset="2" fxFlex="100">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Надані послуги</h2>
+    <div class="month-info" fxLayout="row"  fxLayoutAlign="start center">
+      <h3>За поточний місяць: </h3>
+        <div> Надано послуг: {{monthServices}} | </div>
+        <div>Оплачено: {{monthIncome}} грн.</div>
+    </div>
+  </div>
+  <div class="tab">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <div fxLayout="row" fxLayoutAlign="start space-between">
+        <!-- Date column -->
+        <ng-container matColumnDef="service">
+          <th class="th-name" mat-header-cell *matHeaderCellDef>
+            <div><a>Послуга</a></div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.service }}</td>
+        </ng-container>
+
+        <!-- Download column -->
+        <ng-container matColumnDef="patient">
+          <th mat-header-cell *matHeaderCellDef>Пацієнт</th>
+          <td mat-cell *matCellDef="let element">{{ element.patient }}</td>
+        </ng-container>
+        <ng-container matColumnDef="pay">
+          <th class="th-name" mat-header-cell *matHeaderCellDef>
+            <div><a>Оплата</a></div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.pay }}</td>
+        </ng-container>
+        <ng-container matColumnDef="grn">
+          <th class="th-name" mat-header-cell *matHeaderCellDef>
+            <div><a>Грн</a></div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.grn }}</td>
+        </ng-container>
+      </div>
+
+      <!-- Define columns to display -->
+      <tr mat-header-row *matHeaderRowDef="servColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: servColumns;"></tr>
+
+    </table>
+
+  </div>
+  <div fxLayout="row" fxFlexOffset="2" >
+    <div fxLayout="row" class="paginator-select">Показати <select > <option value="10">10</option>
+      <option value="15" selected>15</option>
+      <option value="20">20</option></select> записів</div>
+   <!-- <mat-paginator [length]="100"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   aria-label="Select page">
+    </mat-paginator>-->
+  </div>
+
+</div>

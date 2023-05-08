@@ -1,0 +1,24 @@
+.tab{
+  border-top:2px solid #5e9fdb;
+  margin-top:20px;
+  max-width: 95%;
+}
+.tab th{
+  background-color:#fafafa ;
+}
+.th-name{
+  width:300px;
+}
+.mat-mdc-table{
+  box-shadow: none;
+}
+.mat-column-name {
+  flex: 1 1 auto;
+}
+
+.mat-column-acts {
+  flex: 0 0 100px;
+}
+.th-name {
+  width: fit-content;
+}

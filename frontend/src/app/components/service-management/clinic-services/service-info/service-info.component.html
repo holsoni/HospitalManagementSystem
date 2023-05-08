@@ -1,0 +1,34 @@
+<div fxFlexOffset="5" fxLayout="column" >
+  <button [routerLink]="['/serviceManagement/hospital/list']">Повернутися до списку</button>
+  <h2 fxFlexOffset="7">Перегляд: {{name}}</h2>
+  <div fxLayout="column" fxLayoutAlign="space-around center ">
+    <div fxLayout="row">
+      <div class="sm-item" fxLayout="column">
+        <label>Код послуги</label>
+        <input disabled value="Не вказано">
+      </div>
+      <div class="sm-item" fxLayout="column">
+        <label>Група</label>
+        <input disabled value="Операції на нижній щелепі">
+      </div>
+    </div>
+    <div fxFlexOffset="5" class="item" fxLayout="column">
+      <label>Назва послуги</label>
+      <input disabled value="Єкстракція зуба нижньої щелепи">
+    </div>
+    <div fxFlexOffset="5" class="item" fxLayout="column">
+      <label>Коротка назва послуги</label>
+      <input disabled value="Єкстракція зуба">
+    </div>
+    <div fxFlexOffset="5" class="item" fxLayout="column">
+      <label>Опис послуги</label>
+      <input disabled value="Не вказано">
+    </div>
+  </div>
+  <div fxFlexOffset="5">
+    <div class="blue-div" fxLayoutAlign="start center"> Зв'язок із послугою класифікатору</div>
+    <div class="big" fxLayoutAlign="start center">Єкстракція зубів нижньої щелепи</div>
+    <div class="blue-div" fxLayoutAlign="start center">Спеціальності лікарів</div>
+    <div  fxLayoutAlign="center center">Немає</div>
+  </div>
+</div>

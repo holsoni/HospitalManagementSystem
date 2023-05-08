@@ -1,0 +1,62 @@
+.filters select{
+  background-color: #fafafa;
+  border: 1px solid #c8c7c7;
+  color: #646464;
+  padding: 7px;
+  height: 35px;
+  width: 100%;
+  outline:none;
+}
+h2{
+  color:#5e9fdb;
+}
+.filters input{
+  background-color: #fafafa;
+  border: 1px solid #c8c7c7;
+  color: #646464;
+  margin-left: 10px;
+  padding: 7px;
+  height: 35px;
+  width: 100%;
+
+  outline:none;
+}
+.filters button{
+  height: 35px;
+  outline: none;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border:2px solid #c5c5c7;
+  width:35px;
+}
+
+.filters img{
+  width:15px;
+  height:15px;
+}
+.filters div{
+  width:100%;
+}
+.filters>button{
+  margin-left:10px;
+}
+.tab{
+  border-top:2px solid #5e9fdb;
+  margin-top:5px;
+}
+.tab th{
+  background-color:#fafafa ;
+}
+.th-name{
+  width:300px;
+}
+.mat-mdc-table{
+  box-shadow: none;
+}
+a{
+  color:#5e9fdb;
+  cursor: pointer;
+}
+a:not([href]):not([tabindex]) {
+  color: #5e9fdb;
+  cursor: pointer;}

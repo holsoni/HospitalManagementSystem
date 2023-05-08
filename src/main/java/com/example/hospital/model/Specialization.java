@@ -20,9 +20,6 @@ public class Specialization {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String specializationName;
-    @OneToMany
-    @JoinColumn(name = "doctors_id", nullable = false)
-    private LinkedHashSet<Doctor> doctors;
     private Date created_at;
     private Date updated_at;
 }

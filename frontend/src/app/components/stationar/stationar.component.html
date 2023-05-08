@@ -1,0 +1,76 @@
+<div fxLayout="column" fxFlexOffset="2" fxFlex="98" style="margin:20px">
+  <div class="heading" fxLayout="row" fxLayoutAlign="space-between center" fxFlex="50">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <img class="sm-img" src="assets/nav-bar/hospital-bed%20(3).png">
+      <h1>Стаціонар. Розміщення пацієнта </h1>
+    </div>
+    <button class="create-btn">Створити картку</button>
+  </div>
+  <div fxLayout="row">
+    <button class="main-btn">Карти пацієнтів</button>
+    <button class="main-btn">Вільні ліжка</button>
+  </div>
+  <div class="two-btn" fxLayout="row" fxFlexOffset="1" >
+    <div fxLayout="row">
+      <button>Без відділення</button>
+      <button>У відділенні</button>
+    </div>
+  </div>
+  <div fxFlexOffset="1" class="filters" fxLayout="row" fxLayoutAlign="space-between center">
+    <select (change)="changeState()" [formControl]="patientStateControl" id="patient-state" placeholder="Оберіть стан пацієнта">
+      <option *ngFor="let state of patientStates">{{ state }}</option>
+    </select>
+    <input  [formControl]="doctorControl" placeholder="Пошук лікаря" type="text" fxFlex="34"><button (click)="getByDoctor()"><img src="assets/often/loupe.png"> </button>
+    <input [formControl]="patientControl" placeholder="Пошук карти за ПІБ або номером"><button ><img src="assets/often/loupe.png"> </button>
+  </div>
+  <div class = "tab" >
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="condition">
+        <th mat-header-cell *matHeaderCellDef> Стан </th>
+        <td mat-cell *matCellDef="let element"> {{element.condition}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="patient">
+        <th mat-header-cell *matHeaderCellDef> Карта пацієнта </th>
+        <td mat-cell *matCellDef="let element"> {{getPatientNameAndLastNameAndID(element.patient)}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="admission">
+        <th mat-header-cell *matHeaderCellDef> Звернення </th>
+        <td mat-cell *matCellDef="let element"> {{element.admission}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="dateTime">
+        <th mat-header-cell *matHeaderCellDef> Дата та час госпіталізації </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateTime}} </td>
+      </ng-container>
+      <ng-container matColumnDef="doctor">
+        <th mat-header-cell *matHeaderCellDef> Лікар </th>
+        <td mat-cell *matCellDef="let element"> {{element.doctor.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="acts">
+        <th mat-header-cell *matHeaderCellDef> Дії </th>
+        <td mat-cell *matCellDef="let element">
+          <div fxLayout="row" fxLayoutAlign="start center">
+                  <button class="sm-btn"><img src="assets/often/hospital-bed%20(4).png"></button>
+                  <button class="sm-btn"> <img src="assets/often/edit-text.png"></button>
+                  <button class="sm-btn"><img src="assets/often/dots%20(1).png"></button></div></td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+
+  </div>
+</div>

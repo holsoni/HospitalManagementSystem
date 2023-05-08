@@ -7,18 +7,21 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.UUID;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "feedbacks")
-public class Feedback {
+@Table(name = "medications")
+public class Medications {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @ManyToOne
-    private User userId;
+    private String name;
+    private String type;
+    private String dayDose;
+    private String maxDayDose;
+    private String ingredients;
     private Date created_at;
     private Date updated_at;
+
 }

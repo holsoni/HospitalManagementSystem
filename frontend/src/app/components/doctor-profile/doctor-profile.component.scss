@@ -1,0 +1,111 @@
+.header{
+  margin-left:40px;
+  margin-top:10px;
+}
+
+.profile-card {
+  margin-left: 40px;
+  width: 400px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-card h1 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.profile-info img {
+  margin-top: 10px;
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-info div {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button {
+  align-content: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  border-radius: 50px;
+  padding: 0px 25px;
+  margin:10px;
+}
+.button img{
+  width:16px;
+  height:16px;
+  padding-right: 3px;
+}
+/* Button color and text color styles */
+.button.light-blue {
+  color: #3eaddd;
+  border-color: #3eaddd;
+}
+.button.orange {
+  color: #ffb055;
+  border-color: #ffb055;
+}
+.button.dark-grey {
+  color: #333333;
+  border-color: #333333;
+}
+.button:hover{
+  background-color: #cccccc;
+}
+
+/* Icon styles */
+.button i {
+  margin-right: 10px;
+}
+
+/* Profile action button styles */
+.profile-actions button {
+  margin-right: 10px;
+}
+
+/* Button row styles */
+.button-row {
+  margin-bottom: 10px;
+}
+
+
+.profile-navigation div {
+  height: 45px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px #ccc;
+}
+
+/* Add shadow and border to specific profile navigation items */
+.profile-navigation .selected {
+  border: 2px solid #007bff;
+  box-shadow: 3px 3px 3px #ccc;
+}
+.profile-navigation .timeline {
+  border: 2px solid #28a745;
+  box-shadow: 3px 3px 3px #ccc;
+}
+.profile-navigation .services {
+  border: 2px solid #dc3545;
+  box-shadow: 3px 3px 3px #ccc;
+}
+.profile-navigation img{
+  width:20px;
+  height:20px;
+  padding-right: 3px;
+}
+
+.profile-navigation>div:hover{
+  background-color: #bcbcbc;
+  cursor: pointer;
+}

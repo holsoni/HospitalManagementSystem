@@ -1,0 +1,5 @@
+<div class="main" fxLayout="column" fxLayoutAlign="start center">
+  <ng-container *ngFor="let item of menu">
+    <a  class="item" routerLink="{{item.route}}" routerLinkActive="link-active"><img src="{{item.imgSrc}}" alt=""></a>
+  </ng-container>
+</div>

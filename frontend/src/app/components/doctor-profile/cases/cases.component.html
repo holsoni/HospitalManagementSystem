@@ -1,0 +1,16 @@
+<div fxFlexOffset = "3" fxFlex fxLayout="column">
+<div  fxLayout = "column" class="services" fxFlex="100">
+  <div  fxLayout="row" class="heading" fxLayoutAlign="start space-around">
+    <h2>Мої справи</h2>
+  </div>
+  <div fxLayout="column">
+    <div fxLayout="row" class="list-cases" fxLayoutAlign="start center">
+      <div fxFlexOffset="2" fxLayoutAlign="center center" fxFlex="11%" routerLink="/doctorProfile/cases/appointments" [routerLinkActive]="['doctorprofile-link-active']">Прийоми</div>
+      <div fxLayoutAlign="center center" fxFlex="15%" routerLink="/doctorProfile/cases/reports" [routerLinkActive]="['doctorprofile-link-active']">Діагностичні звіти</div>
+      <div fxLayoutAlign="center center" fxFlex="11%" routerLink="/doctorProfile/cases/procedures" [routerLinkActive]="['doctorprofile-link-active']">Процедури</div>
+      <div fxLayoutAlign="space-around center" fxFlex="18%" routerLink="/doctorProfile/cases/searchByEMZ" [routerLinkActive]="['doctorprofile-link-active']">Пошук ЕМЗ за ідентифікатором</div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+</div>

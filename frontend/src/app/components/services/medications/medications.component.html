@@ -1,0 +1,48 @@
+  <div class="search">
+    <p>Довідник лікарських засобів</p>
+    <div fxLayout="row">
+      <input [formControl]="searchByName" type="text" placeholder="Пошук за назвою лікарського засобу">
+      <button fxLayoutAlign="center center" (click)="findByName()">
+        <img src="assets/often/loupe.png"></button>    </div>
+  </div>
+
+  <div class = "tab" fxLayout="column">
+    <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name" >
+        <th class="th-name" mat-header-cell *matHeaderCellDef> Назва </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Форма випуску </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="dayDose">
+        <th mat-header-cell *matHeaderCellDef> Підтримуюча добова доза </th>
+        <td mat-cell *matCellDef="let element"> {{element.dayDose}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="maxDayDose">
+        <th mat-header-cell *matHeaderCellDef> Максимальна добова доза </th>
+        <td mat-cell *matCellDef="let element"> {{element.maxDayDose}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ingredients">
+        <th mat-header-cell *matHeaderCellDef> Інгредієнти </th>
+        <td mat-cell *matCellDef="let element"> {{element.ingredients}} </td>
+      </ng-container>
+      <ng-container *ngIf="!dataNotNull()">
+          <div colspan="5">Немає інформації</div>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="medicsColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: medicsColumns;"></tr>
+    </table>
+    <div *ngIf="!dataNotNull()" fxFlexOffset="2" fxLayoutAlign="center center">
+
+        <div >Немає інформації</div>
+    </div>
+  </div>

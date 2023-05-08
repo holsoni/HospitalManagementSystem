@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -20,13 +21,16 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User userId;
-    private String name;
+    private String firstName;
     private String fathersName;
-    private String surname;
+    private String lastName;
     private String dateOfBirth;
-    private String weight;
-    private String height;
+    @ManyToOne
+    private Address placeOfBirth;
+    @OneToMany
+    private List<Address> addresses;
     private String phone;
+    private String birthCode;
     @ManyToOne
     private Gender gender;
     private Date created_at;

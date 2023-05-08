@@ -1,0 +1,35 @@
+.tab{
+  border-top:2px solid #5e9fdb;
+  margin-top:20px;
+  max-width: 95%;
+  margin-left: 2%;
+}
+.tab th{
+  background-color:#fafafa ;
+}
+.th-name{
+  width:300px;
+}.search{
+   margin-left: 30px;
+   margin-top:30px;
+ }
+.search input{
+  width:400px;
+  outline: none;
+}
+
+.search input:focus{
+  border: 1px solid #75b5df;
+}
+.search button{
+  background-color: #e6e6e6;
+  border:1px solid #7d7d7d;
+  box-shadow: #cccccc;
+  outline: none;
+
+}
+.search img{
+  width:20px;
+  height:20px;
+}
+

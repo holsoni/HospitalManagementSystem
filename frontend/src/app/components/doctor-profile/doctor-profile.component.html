@@ -1,0 +1,45 @@
+
+<div fxLayout="column" >
+  <div class="header">
+    <h1>Сторінка лікаря: Ім'я Прізвище</h1>
+  </div>
+  <div fxLayout="row">
+<div fxLayout="column" fxLayoutAlign="center center">
+
+  <div fxLayout="row">
+  <div class="profile-card" fxLayout="column" >
+    <div class="profile-info" fxLayout= "column" fxLayoutAlign="space-around center">
+      <img src="https://cdn-icons-png.flaticon.com/512/921/921129.png" alt=""/>
+      <div style="background-color: #28a745;width: 100%"> Код співробітника: </div></div>
+
+    <div  fxFlex="70" fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button class="button oval first light-blue"  routerLink="/doctorProfile/edit">
+          <img src="assets/doctorProfile/avatar%20(1).png" alt=""  >Профіль
+        </button>
+        <button class="button oval first orange">
+          <img src="assets/doctorProfile/upcoming%20(1).png">Запланувати
+        </button>
+      </div>
+      <button fxFlexOffset="2" class="button oval dark-grey">
+        <img src="assets/doctorProfile/three-o-clock-clock.png"/>Призначити прийом на зараз
+      </button>
+  </div>
+
+    <div fxLayout="column" class="profile-navigation" fxFlexOffset="3">
+      <div fxLayoutAlign="start center"><img src="assets/doctorProfile/avatar-grey.png"/>Налаштування профілю</div>
+      <div fxLayoutAlign="start center"> <img src="assets/doctorProfile/copy.png"/>Таймлайн</div>
+      <div fxLayoutAlign="start center"> <img src="assets/doctorProfile/copy.png"/>Шаблони медзаписів</div>
+      <div fxLayoutAlign="start center" routerLink="/doctorProfile/medicalForms"><img src="assets/doctorProfile/copy.png">Медичні форми</div>
+      <div fxLayoutAlign="start center"><img src="assets/doctorProfile/copy.png">Послуги лікаря</div>
+      <div fxLayoutAlign="start center"  routerLink="/doctorProfile/doneServices"><img src="assets/doctorProfile/copy.png"/>Надані послуги</div>
+      <div fxLayoutAlign="start center"  routerLink="/doctorProfile/cases/appointments"><img src="assets/doctorProfile/loading.png"/>Мої справи</div>
+    </div>
+</div>
+</div>
+</div>
+    <div fxFlex>
+      <router-outlet ></router-outlet>
+    </div>
+    </div>
+</div>

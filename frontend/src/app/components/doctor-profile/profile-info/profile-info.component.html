@@ -1,0 +1,142 @@
+<div fxLayout="row">
+  <div fxFlexOffset="1.5"  class="profile-picture" fxLayout="column" fxFlex="20">
+    <div class="card" fxLayout="column" fxLayoutAlign="center space-around">
+      <div fxLayout="column" fxLayoutAlign="center-around center">
+        <img src="https://cdn-icons-png.flaticon.com/512/921/921129.png">
+        <button><img src="assets/often/edit-text.png">Редагувати аватар </button>
+      </div>
+    </div>
+
+    <div fxFlex="100" class="card" fxLayout="column" fxLayoutAlign="space-around">
+      <h2>Авторизація</h2>
+      <div class="login" fxLayout="column" fxLayoutAlign="start start">
+        <label>Логін</label>
+        <input style="width:90%" disabled type="text" placeholder="email@gmail.com">
+      </div>
+    </div>
+    <div  class="card" fxLayout="column" fxLayoutAlign="space-around center">
+      <h2 >Загальна інформація</h2>
+      <div class="general" fxFlexOffset="3" fxLayout="column" fxLayoutAlign="space-between ">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <label>Прізвище</label>
+          <input  disabled type="text" placeholder="Прізвище">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <label>Ім'я</label>
+          <input disabled type="text" placeholder="Ім'я">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <label>По батькові</label>
+          <input disabled type="text" placeholder="По батькові">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <label>Дата народження</label>
+          <input disabled type="text" placeholder="Дата народження">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <label>Моб. телефон</label>
+          <input disabled type="text" placeholder="Моб. телефон">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" fxFlexOffset="1.5" fxLayout="column" fxFlex="75">
+      <h2 fxFlexOffset='2' fxLayoutAlign="start center" style="margin-left: 20px">Місце роботи</h2>
+    <div  fxFlexOffset='2' fxLayout="row">
+      <div  fxFlexOffset="2" class="card" fxFlex="47" fxLayout="column">
+        <div fxFlexOffset='2'fxLayout="row" fxLayoutAlign="start center">
+          <img fxFlexOffset='2' src="assets/doctorProfile/building.png">
+          <h2>Посада та кваліфікація</h2>
+        </div>
+        <div  class="qualification" fxFlexOffset="3" fxLayout="column" fxLayoutAlign="center space-between">
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Посада</label>
+            <input  disabled type="text" placeholder="Посада">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Спеціальність</label>
+            <input disabled type="text" placeholder="Спеціальність">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Кваліфікація</label>
+            <input disabled type="text" placeholder="Кваліфікація">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Початок лікарського стажу</label>
+            <input disabled type="text" placeholder="Початок лікарського стажу">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Організація</label>
+            <input disabled type="text" placeholder="Організація">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Підрозділ</label>
+            <input disabled type="text" placeholder="Підрозділ">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Відділення</label>
+            <input disabled type="text" placeholder="Відділення">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Телефон</label>
+            <input disabled type="text" placeholder="Телефон">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>E-mail</label>
+            <input disabled type="text" placeholder="E-mail">
+          </div>
+        </div>
+      </div>
+      <div fxFlexOffset="1.5" class="card" fxFlex="47" fxLayout="column">
+        <div fxFlexOffset='2' fxLayout="row" fxLayoutAlign="start center">
+          <img fxFlexOffset='2' src="assets/doctorProfile/three-o-clock-clock.png">
+          <h2>Специфіка роботи</h2>
+        </div>
+        <div  class="qualification" fxFlexOffset="3" fxLayout="column" fxLayoutAlign="center space-between">
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <label>Тривалість прийому</label>
+            <input disabled type="text" placeholder="15 хв">
+
+        </div>
+        </div>
+        <div class="specifics">
+          <h3>Проведення прийому по відеодзвінку</h3>
+          <div fxLayout="column">
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">Заборонити
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">Дозволити
+              <span class="checkmark"></span>
+            </label>
+            <div class="square-checkboxes" fxLayout="column">
+              <label>
+                <input type="checkbox">Консультує онлайн незалежно від регіону</label>
+              <label>
+                <input type="checkbox">Консультує лише онлайн</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="specifics">
+          <h3>Обмеження для запису на прийом</h3>
+          <div fxLayout="column">
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">Без направлення
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">По направленню
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">
+              <input type="radio" checked="checked" name="radio">Через реєстратуру
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

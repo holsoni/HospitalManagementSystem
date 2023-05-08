@@ -1,0 +1,73 @@
+<body fxLayout="column">
+  <div class="heading" fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Пацієнти</h1>
+    <div fxLayout="row">
+      <button>Пошук за направленням</button>
+      <button disabled="true">Створити нову ЕЗК</button>
+    </div>
+  </div>
+
+  <div class="search" fxFlexOffset="2">
+    <h3>Пошук пацієнтів за номером телефону в моєму медзакладі</h3>
+    <div>
+      <input [formControl]="phone" type="text" fxFlex="34"><button (click)="getByPhone(phone.value ?? '')"><img src="assets/often/loupe.png"> </button>
+    </div>
+  </div>
+  <h3 fxFlexOffset="2">Пошук ідентифікованого пацієнта </h3>
+  <div class="form"  fxFlexOffset="1" fxLayout="column">
+    <div fxLayout="column" fxFlex="90">
+      <h4>Якщо пацієнта не знайдено, або немає номера телефону - уточніть пошук.</h4>
+      <div fxLayout="column">
+        <form [formGroup]="patientForm" fxLayout="row">
+            <div fxLayout="column" fxFlex="80">
+              <div fxFlex="100" fxLayout="row" fxLayoutAlign="start">
+                <div fxFlex="33" fxLayout="column">
+                  <label class="required" for="last-name">Прізвище </label>
+                  <input required id="last-name" type="text" formControlName="lastName">
+
+                </div>
+                <div fxFlex="33" fxLayout="column">
+                  <label class="required" for="first-name">Ім'я </label>
+                  <input  id="first-name" type="text" formControlName="firstName">
+                </div>
+                <div fxFlex="33" fxLayout="column">
+                  <label class="required" for="date">Дата народження </label>
+                  <input id="date" type="date" formControlName="dateOfBirth">
+                </div>
+              </div>
+              <div *ngIf="advancedSearch" fxLayout="row" fxLayoutAlign="start" fxFlexOffset="2">
+                <div fxFlex="33" fxLayout="column">
+                  <label for="fathers">По батькові </label>
+                  <input  id="fathers" type="text" formControlName="fathersName">
+                </div>
+                <div fxFlex="33" fxLayout="column">
+                  <label for="id">РНОКПП </label>
+                  <input  id="id" type="text" formControlName="id">
+                </div>
+                <div fxFlex="33" fxLayout="column">
+                  <label for="code">Номер свідоцтва про народження </label>
+                  <input  id="code" type="text" formControlName="birthCode">
+                </div>
+              </div>
+
+            </div>
+            <div fxFlex fxLayout="column" fxLayoutAlign="center space-around">
+              <button id="search-btn" (click)="getAdvancedSearch()">Пошук</button>
+              <button (click)="resetSearch()">Очистити все</button>
+            </div>
+
+        </form>
+        <div fxLayout = "row" fxFlexOffset="2">
+          <span *ngIf="!advancedSearch" (click)="changeAdvancedSearch()">Розширений пошук</span>
+          <span *ngIf="advancedSearch"  (click)="changeAdvancedSearch()">Сховати</span>
+          <span>Знайти неідентифікованого пацієнта</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!patientForm.touched" class="hint" fxFlexOffset="2" fxFlex="100" fxLayoutAlign="center center">
+    <span>
+      Введіть в пошук номер телефону або використовуйте розширений пошук
+    </span>
+  </div>
+</body>

@@ -1,0 +1,12 @@
+<div>
+  <div>
+    <label for="username"> Username</label>
+    <input [formControl]="username" id="username" type="text" required/>
+  </div>
+
+  <div>
+    <label for="password"> Password</label>
+    <input [formControl]="password" id="password" type="text" required/>
+  </div>
+  <button (click)="onSubmit()">Login</button>
+</div>

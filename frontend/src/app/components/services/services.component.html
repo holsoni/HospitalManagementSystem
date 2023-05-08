@@ -1,0 +1,14 @@
+<div fxLayout = "column" class="services">
+  <div  fxLayout="row" class="heading" fxLayoutAlign="start center">
+  <img src="assets/nav-bar/catalog.png">
+  <h1>Каталог препаратів та послуг</h1>
+  </div>
+  <div fxFlexOffset="2" fxLayout="column">
+    <div fxLayout="row">
+      <a [routerLink]="['./medications']" [routerLinkActive]="['services-btn-active']"  (click)="viewMedicationsTable()" class="services-btn">Лікарські засоби</a>
+      <a [routerLink]="['./procedures']"  [routerLinkActive]="['services-btn-active']"   (click)="viewServicesTable()" class="services-btn">Послуги</a>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>
+</div>

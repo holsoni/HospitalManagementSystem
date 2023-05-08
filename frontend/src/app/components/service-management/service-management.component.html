@@ -1,0 +1,16 @@
+<body fxLayout="column">
+  <div class="heading" fxLayout="row">
+    <img src="assets/nav-bar/healthcare%20(1).png">
+    <h1> Управління послугами</h1>
+  </div>
+  <div fxLayout="row" fxFlexOffset="1"  >
+    <div fxFlexOffset="1" class="buttons" fxLayout="column" fxFlex="18">
+      <a  [routerLink]="['./hospital']" [routerLinkActive]="['btn-active']">Послуги клініки</a>
+      <a [routerLink]="['./groups']" [routerLinkActive]="['btn-active']">Групи послуг клініки</a>
+      <a [routerLink]="['./protocols']" [routerLinkActive]="['btn-active']">Протоколи клініки</a>
+    </div>
+      <router-outlet fxFlexOffset="2" ></router-outlet>
+
+  </div>
+
+</body>

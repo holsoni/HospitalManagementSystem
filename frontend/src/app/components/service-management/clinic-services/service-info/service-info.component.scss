@@ -1,0 +1,42 @@
+h2{
+  color:#5e9fdb;
+}
+.item input{
+  width: 650px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #7f7f7f;
+  margin-right: 15px;
+}
+
+.sm-item label,
+.item label{
+  width: 125px;
+  color:#7f7f7f;
+  font-size: 15px;
+}
+.sm-item input{
+  width: 320px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #7f7f7f;
+  margin-right: 15px;
+}
+
+.blue-div{
+  margin-bottom: 10px;
+  background-color: #5e9fdb;
+  height:40px;
+  width:900px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #515151;
+
+}
+.big{
+  height:36px;
+  margin-bottom: 10px;
+
+  background-color: #e3e3e3;
+  border-left: 2px solid #c3c3c3;
+}

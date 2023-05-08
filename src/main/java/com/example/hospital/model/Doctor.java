@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -22,7 +23,7 @@ public class Doctor {
     private String fathersName;
     private String surname;
     @OneToMany
-    private ArrayList<Schedule> schedule;
+    private Set<Schedule> schedule;
     @ManyToOne
     @JoinColumn(name = "specialization_id")
     private Specialization specialization;
@@ -30,8 +31,6 @@ public class Doctor {
     private String phone;
     @ManyToOne
     private Gender gender;
-    @OneToMany
-    private ArrayList<Feedback> feedbacks;
     private Date created_at;
     private Date updated_at;
 }

@@ -1,0 +1,18 @@
+.main{
+  height: 100%;
+  width:80px;
+  background-color: #f4f4fb;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+}
+img{
+  height:40px;
+  width:40px;
+  margin: 20px;
+}
+.item{
+  border-bottom: 1px solid #d7d7d7;
+  border-top: 1px solid #d7d7d7;
+}
+.link-active{
+  background-color: #e3e3e8;
+}

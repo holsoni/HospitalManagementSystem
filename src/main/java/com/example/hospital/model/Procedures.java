@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Data
@@ -18,6 +19,10 @@ public class Procedures {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String procedureName;
+    @ManyToOne
+    private Group group;
+    private String classification;
+    private String acts;
     private Date created_at;
     private Date updated_at;
 }

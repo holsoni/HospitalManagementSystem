@@ -1,0 +1,71 @@
+<div fxLayout="column"  fxFlex="98">
+  <h2>Послуги клініки</h2>
+  <div class="filters" fxLayout="row" fxLayoutAlign="start space-between" >
+    <div>
+      <select [formControl]="statusControl" id="status-state">
+        <option *ngFor="let state of status">{{ state }}</option>
+      </select>
+    </div>
+    <div fxLayout="row">
+      <input placeholder="Пошук по коду">
+      <button ><img src="assets/often/loupe.png"> </button>
+    </div>
+    <div fxLayout="row">
+      <input placeholder="Пошук по назві">
+      <button ><img src="assets/often/loupe.png"> </button>
+    </div>
+    <select style="  margin-left:10px;" [formControl]="groupControl" id="group-state">
+      <option *ngFor="let state of group">{{ state }}</option>
+    </select>
+    <button><img src="assets/often/filter%20(1).png"></button>
+  </div>
+  <div fxFlexOffset="2">
+    <div class = "tab" >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Статус </th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef> Код   </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Назва послуги </th>
+          <td mat-cell *matCellDef="let element"> <a [routerLink]="['/serviceManagement/hospital/info']">{{element.name}} </a></td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="group">
+          <th mat-header-cell *matHeaderCellDef>Група</th>
+          <td mat-cell *matCellDef="let element"> {{element.group}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="classificator">
+          <th mat-header-cell *matHeaderCellDef>Послуга з класифікатору </th>
+          <td mat-cell *matCellDef="let element"> {{element.classificator}} </td>
+        </ng-container>
+        <ng-container matColumnDef="acts">
+          <th mat-header-cell *matHeaderCellDef> Дії </th>
+          <td mat-cell *matCellDef="let element">
+            <!-- <div fxLayout="row" fxLayoutAlign="start center">
+               <button class="sm-btn"><img src="assets/often/hospital-bed%20(4).png"></button>
+               <button class="sm-btn"> <img src="assets/often/edit-text.png"></button>
+               <button class="sm-btn"><img src="assets/often/dots%20(1).png"></button></div>--></td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
