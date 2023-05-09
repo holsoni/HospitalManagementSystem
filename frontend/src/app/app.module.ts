@@ -44,6 +44,7 @@ import { ServiceInfoComponent } from './components/service-management/clinic-ser
 import { AllHospitalServicesComponent } from './components/service-management/clinic-services/all-hospital-services/all-hospital-services.component';
 import {StationarService} from "./services/stationar/stationar.service";
 import {RequestInterceptorInterceptor} from "./request-interceptor.interceptor";
+import { DoctorsMainComponent } from './components/doctors-main/doctors-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,8 @@ import {RequestInterceptorInterceptor} from "./request-interceptor.interceptor";
     ServicesGroupsComponent,
     ProtocolsComponent,
     ServiceInfoComponent,
-    AllHospitalServicesComponent
+    AllHospitalServicesComponent,
+    DoctorsMainComponent
   ],
   imports: [
     BrowserModule,

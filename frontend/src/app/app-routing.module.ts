@@ -38,38 +38,43 @@ import {
 } from "./components/service-management/clinic-services/all-hospital-services/all-hospital-services.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AuthenticationGuardGuard} from "./authentication-guard.guard";
+import {DoctorsMainComponent} from "./components/doctors-main/doctors-main.component";
 
 
-const routes: Routes = [{ path: 'login', component: LoginComponent},
-    { path: 'doctorProfile', canActivate:[AuthenticationGuardGuard], component: DoctorProfileComponent,
-                              children:[
-                                {path: '', redirectTo: 'cases/appointments', pathMatch: 'full'},
-                                {path:'medicalForms',component:MedicalFormsComponent},
-                                {path:'doneServices',component:DoneServicesComponent},
-                                {path:'cases',component:CasesComponent,
-                                        children:[
-                                          {path:'appointments',component:DoctorsProfileAppointmentsComponent},
-                                          {path:'reports',component:DoctorsProfileReportsComponent},
-                                          {path:'procedures',component:DoctorsProfileDoneProceduresComponent},
-                                          {path:'searchByEMZ',component:DoctorsProfileSearchByEmzComponent}
-                                                  ]}]},
-  { path: 'schedule', component: ScheduleComponent },
-  {path:'doctorProfile/edit',component:ProfileInfoComponent},
-  { path: 'calendar', component: CalendarComponent },
-  { path: 'patients', component: PatientsComponent },
-  { path: 'catalog', component: ServicesComponent,
-    children:[  {path: '', redirectTo: 'medications', pathMatch: 'full'},
-              {path:'medications',component:MedicationsComponent},
-              {path:'procedures',component:ProceduresComponent}]},
-  { path: '', component: HomeComponent },
-  { path: 'stationar', component: StationarComponent },
-  { path: 'serviceManagement', component: ServiceManagementComponent,
-      children:[  {path: '', redirectTo: 'hospital/list', pathMatch: 'full'},
-        {path:'hospital',
-            children:[ {path: 'info', component: ServiceInfoComponent},
-              {path: 'list', component: AllHospitalServicesComponent}]},
-        {path:'groups',component:ServicesGroupsComponent},
-        {path:'protocols',component:ProtocolsComponent}]},
+const routes: Routes = [
+  { path: 'login', component: LoginComponent},
+  {path:'workers', component:DoctorsMainComponent,
+    children:[
+              {path: 'doctorProfile',  component: DoctorProfileComponent,
+                children:[
+                          {path: '', redirectTo: 'cases/appointments', pathMatch: 'full'},
+                          {path:'medicalForms',component:MedicalFormsComponent},
+                          {path:'doneServices',component:DoneServicesComponent},
+                          {path:'cases',component:CasesComponent,
+                                  children:[
+                                    {path:'appointments',component:DoctorsProfileAppointmentsComponent},
+                                    {path:'reports',component:DoctorsProfileReportsComponent},
+                                    {path:'procedures',component:DoctorsProfileDoneProceduresComponent},
+                                    {path:'searchByEMZ',component:DoctorsProfileSearchByEmzComponent}]}]},
+              { path: 'schedule', component: ScheduleComponent },
+              {path:'doctorProfile/edit',component:ProfileInfoComponent},
+              { path: 'calendar', component: CalendarComponent },
+              { path: 'patients', component: PatientsComponent },
+              { path: 'catalog', component: ServicesComponent,
+                      children:[  {path: '', redirectTo: 'medications', pathMatch: 'full'},
+                                {path:'medications',component:MedicationsComponent},
+                                {path:'procedures',component:ProceduresComponent}]},
+              { path: '', component: HomeComponent },
+              { path: 'stationar', component: StationarComponent },
+              { path: 'serviceManagement', component: ServiceManagementComponent,
+                      children:[
+                        {path: '', redirectTo: 'hospital/list', pathMatch: 'full'},
+                        {path:'hospital',
+                            children:[
+                              {path: 'info', component: ServiceInfoComponent},
+                              {path: 'list', component: AllHospitalServicesComponent}]},
+                        {path:'groups',component:ServicesGroupsComponent},
+                        {path:'protocols',component:ProtocolsComponent}]}]}
 ];
 
 @NgModule({

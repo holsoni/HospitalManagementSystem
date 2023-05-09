@@ -31,7 +31,7 @@ export class LoginComponent {
     // @ts-ignore
     this.loginService.login(user).subscribe(res =>{
       if(res){
-        this.router.navigate(['']);}})
+        this.router.navigate(['/workers/']);}})
 
 
   }

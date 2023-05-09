@@ -28,7 +28,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 
 public class AppConfig {
-    private final CurrentUserService currentUserService;
     private final SessionFilter sessionFilter;
 
     @Bean
