@@ -2,11 +2,6 @@ package com.example.hospital.controller.rest;
 
 import com.example.hospital.model.Doctor;
 import com.example.hospital.model.MedicalCard;
-import com.example.hospital.model.Medications;
-import com.example.hospital.model.Procedures;
-import com.example.hospital.repository.MedicalCardRepository;
-import com.example.hospital.repository.MedicationsRepository;
-import com.example.hospital.repository.ProceduresRepository;
 import com.example.hospital.service.DoctorService;
 import com.example.hospital.service.StationarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +28,11 @@ public class StationarController {
         return  service.getAll();
     }
 
+    @GetMapping("/getHospitalized")
+    public List<MedicalCard> getAllNotHospitalized(@RequestParam boolean value) {
+        return  service.getByHospitalized(value);
+    }
+
 
     /*@PostMapping("/addCard")
     void addCard(@RequestBody MedicalCard medicalCard) {
@@ -48,7 +48,7 @@ public class StationarController {
 
     @GetMapping("searchName")
     public List<MedicalCard> getByNameContains(@RequestParam String name) {
-        return  service.getSearch(name);
+        return  service.getAllByName(name);
     }
     @GetMapping("getAllByDoctorId")
     public List<MedicalCard> getAllByDoctorIdIs(@RequestParam UUID id) {

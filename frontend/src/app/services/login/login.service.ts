@@ -8,31 +8,62 @@ import {User} from "../../model/user";
   providedIn: 'root'
 })
 export class LoginService {
-  public sessionId:string;
-  isLoggedIn = false;
-  redirectUrl: string | null = null;
-  private readonly url: string;
+
+  private baseUrl = "http://localhost:8080"
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080/login';
   }
 
-  getSessionId(){
-    return this.sessionId;
-  }
-  public login(user: any): Observable<string> {
-    return this.http.post<any>(this.url, user).pipe(
-      tap(res => {
-        if (res && res.sessionId) {
-          this.sessionId = res.sessionId;
-          sessionStorage.setItem('token', res.sessionId);
-        } else {
-          throw new Error('Authentication failed');
-        }
-        this.isLoggedIn = true;
-      }),
-      map(() => this.sessionId)
-    );
+  public getCurrentUser(){
+    return this.http.get(`${this.baseUrl}/current-user`)
   }
 
+  public generateToken(loginData:any){
+    let url = `${this.baseUrl}/generate-token`;
+    return this.http.post(url,loginData);
+  }
+
+  public loginUser(token:any){
+    localStorage.setItem("token", token)
+    return true;
+  }
+
+  public isLoggedIn(){
+    let tokenStr = localStorage.getItem("token");
+    if (tokenStr == undefined || tokenStr == '' || tokenStr == null){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  public logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    return true;
+  }
+
+  public getToken(){
+    return localStorage.getItem('token');
+  }
+
+  public setUser(user:any){
+    localStorage.setItem("user", JSON.stringify(user))
+  }
+
+  public getUser(){
+    let userStr = localStorage.getItem('user');
+    if (userStr != null){
+      return JSON.parse(userStr);
+    } else {
+      this.logout();
+      return null;
+    }
+  }
+
+  public getUserRole(){
+    let user = this.getUser();
+    console.log(user.authorities[0].authority);
+    return user.authorities[0].authority;
+  }
 }

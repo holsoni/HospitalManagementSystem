@@ -1,11 +1,8 @@
 package com.example.hospital.service;
 
 import com.example.hospital.model.MedicalCard;
-import com.example.hospital.model.MedicalForm;
 import com.example.hospital.repository.MedicalCardRepository;
-import com.example.hospital.repository.MedicalFormRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +23,10 @@ public class StationarService {
     public List<MedicalCard> getAlByCondition(String condition){
         return medicalCardRepository.findAllByConditionContainingIgnoreCase(condition);
     }
-    public List<MedicalCard> getSearch(String lastName){
+    public List<MedicalCard> getByHospitalized(boolean value){
+        return medicalCardRepository.findAllByHospitalizedIs(value);
+    }
+    public List<MedicalCard> getAllByName(String lastName){
         return medicalCardRepository.findAllByPatientLastNameContains(lastName);
     }
     public void delete(UUID id){

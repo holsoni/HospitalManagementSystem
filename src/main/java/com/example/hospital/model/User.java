@@ -10,10 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 import java.sql.Date;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -28,15 +25,21 @@ public class User  implements UserDetails{
     private String username;
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<Role> role;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
     private Date created_at;
     private Date updated_at;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return  role;
+        return  roles;
     }
 
     @Override

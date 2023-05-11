@@ -27,7 +27,7 @@ public class MedicalCard {
     private LocalDateTime dateTime;
     @ManyToOne
     private Doctor doctor;
-    private boolean isHospitalized;
+    private boolean hospitalized;
     private int bed;
 
     private Date createdAt;

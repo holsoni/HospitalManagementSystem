@@ -9,6 +9,7 @@ import java.util.UUID;
 public interface MedicalCardRepository extends JpaRepository<MedicalCard, UUID> {
     List<MedicalCard> findAllByPatientFirstNameContains(String name);
     List<MedicalCard> findAllByPatientLastNameContains(String lastName);
+    List<MedicalCard> findAllByHospitalizedIs(boolean value);
     List<MedicalCard> findAllByPatientIdContains(String id);
     List<MedicalCard> findAllByConditionContainingIgnoreCase(String condition);
     List<MedicalCard> findAllByDoctorIdIs(UUID doctor_id);

@@ -25,8 +25,11 @@ public class PatientsController {
 
     @GetMapping("/search/{phone}")
     public List<Patient> getPatientByPhone(@PathVariable String phone) {
-        System.out.println("not found");
         return  service.findAllByPhone(phone);
+    }
+    @GetMapping("/getById")
+    public Patient getPatientByPhone(@RequestParam UUID id) {
+        return  service.getById(id);
     }
     @GetMapping("/advancedSearch")
     public List<Patient> getPatientAdvanced(        @RequestParam(name = "firstName") String firstName,

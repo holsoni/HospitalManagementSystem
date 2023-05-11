@@ -19,6 +19,8 @@ export class Patient {
     let lastName = this.lastName.substring(0, 10);
     return `${id} ${firstName} ${lastName}`;
   }
+
+
 }
 
 

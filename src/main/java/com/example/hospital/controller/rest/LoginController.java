@@ -16,13 +16,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/")
 public class LoginController {
 
     @Autowired
@@ -59,5 +58,10 @@ public class LoginController {
         catch (BadCredentialsException e){
             throw new Exception("Invalid credentials "+ e.getMessage());
         }
+    }
+
+    @GetMapping("/current-user")
+    public User getCurrentUser(Principal principal){
+        return (User)this.userDetailService.loadUserByUsername(principal.getName());
     }
 }

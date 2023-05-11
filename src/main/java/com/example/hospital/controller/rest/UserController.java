@@ -2,11 +2,10 @@ package com.example.hospital.controller.rest;
 
 import com.example.hospital.model.User;
 import com.example.hospital.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -25,6 +24,10 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getUsers() {
         return  userRepository.findAll();
+    }
+    @GetMapping("/user/getById")
+    public Optional<User> getUserById(@RequestParam UUID id) {
+        return  userRepository.findById(id);
     }
 
     @PostMapping("/users")

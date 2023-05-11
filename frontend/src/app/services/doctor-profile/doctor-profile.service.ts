@@ -10,7 +10,7 @@ export class DoctorProfileService {
   private readonly url: string;
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080/doctorProfile';
+    this.url = 'http://localhost:8080/doctor';
   }
 
   public getAllMedicalForms(): Observable<MedicalForm[]> {

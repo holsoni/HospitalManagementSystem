@@ -9,6 +9,7 @@ $my-theme: mat.define-light-theme(( color: ( primary: $my-primary, accent: $my-a
   background-color: #ffffff;
   height: 100%;
 }
+@import "~bootstrap/dist/css/bootstrap.css";
 html{
   height: 100%;
 }

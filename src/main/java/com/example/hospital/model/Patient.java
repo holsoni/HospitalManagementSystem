@@ -30,6 +30,7 @@ public class Patient {
     @OneToMany
     private List<Address> addresses;
     private String phone;
+    private String email;
     private String birthCode;
     @ManyToOne
     private Gender gender;

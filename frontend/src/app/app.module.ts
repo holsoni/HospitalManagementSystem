@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Observable, Subscription} from 'rxjs';
@@ -43,8 +42,26 @@ import { ProtocolsComponent } from './components/service-management/protocols/pr
 import { ServiceInfoComponent } from './components/service-management/clinic-services/service-info/service-info.component';
 import { AllHospitalServicesComponent } from './components/service-management/clinic-services/all-hospital-services/all-hospital-services.component';
 import {StationarService} from "./services/stationar/stationar.service";
-import {RequestInterceptorInterceptor} from "./request-interceptor.interceptor";
 import { DoctorsMainComponent } from './components/doctors-main/doctors-main.component';
+import {HttpClientModule} from "@angular/common/http";
+import {authInterceptorProviders} from "./services/interceptor/auth.interceptor";
+import { DoctorsComponent } from './admin-components/doctors/doctors.component';
+import { AdminDashboardComponent } from './admin-components/admin-dashboard/admin-dashboard.component';
+import { PatientCardsComponent } from './components/stationar/patient-cards/patient-cards.component';
+import { FreeBedsComponent } from './components/stationar/free-beds/free-beds.component';
+import { PatientPageComponent } from './components/patient-page/patient-page.component';
+import { PatientMenuComponent } from './components/patient-page/patient-menu/patient-menu.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatCardModule} from "@angular/material/card";
+import { PatientProfileInfoComponent } from './components/patient-page/patient-profile-info/patient-profile-info.component';
+import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
+import { ModalCreatecardComponent } from './components/stationar/modal-createcard/modal-createcard.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +92,15 @@ import { DoctorsMainComponent } from './components/doctors-main/doctors-main.com
     ProtocolsComponent,
     ServiceInfoComponent,
     AllHospitalServicesComponent,
-    DoctorsMainComponent
+    DoctorsMainComponent,
+    DoctorsComponent,
+    AdminDashboardComponent,
+    PatientCardsComponent,
+    FreeBedsComponent,
+    PatientPageComponent,
+    PatientMenuComponent,
+    PatientProfileInfoComponent,
+    ModalCreatecardComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,9 +113,17 @@ import { DoctorsMainComponent } from './components/doctors-main/doctors-main.com
     MatButtonModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatLegacyPaginatorModule
+    MatExpansionModule,
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass:RequestInterceptorInterceptor, multi:true},
+  providers: [authInterceptorProviders,
     UserService,MedicationserviceService,ProcedureService,DoctorProfileService,StationarService],
   bootstrap: [AppComponent]
 })

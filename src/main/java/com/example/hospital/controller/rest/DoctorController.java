@@ -1,25 +1,32 @@
 package com.example.hospital.controller.rest;
 
+import com.example.hospital.model.Doctor;
 import com.example.hospital.model.MedicalForm;
-import com.example.hospital.model.Patient;
+import com.example.hospital.service.DoctorService;
 import com.example.hospital.service.MedicalFormService;
-import com.example.hospital.service.PatientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/doctorProfile")
-@RequestMapping("/doctorProfile")
+@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/doctor")
 public class DoctorController {
     private final MedicalFormService medicalFormService;
+    private final DoctorService doctorService;
 
-    public DoctorController(MedicalFormService MedicalFormService){
+    public DoctorController(MedicalFormService MedicalFormService, DoctorService doctorService){
         this.medicalFormService = MedicalFormService;
+        this.doctorService = doctorService;
+    }
+
+    @GetMapping("/getAll")
+    public List<Doctor> getAll(){
+        return doctorService.getAll();
     }
 
     @GetMapping("/medicalForms/getAll")
-    public List<MedicalForm> getAll() {
+    public List<MedicalForm> getAllForms() {
         System.out.println("not found");
         return  medicalFormService.getAll();
     }

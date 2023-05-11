@@ -44,4 +44,9 @@ export class StationarService {
     const url = `${this.url}/searchCondition?condition=${condition}`;
     return this.http.get<MedicalCard[]>(url);
   }
+  public getByHospitalized(value:boolean): Observable<MedicalCard[]> {
+    const url = `${this.url}/getHospitalized?value=${value}`;
+    return this.http.get<MedicalCard[]>(url);
+  }
+
 }
