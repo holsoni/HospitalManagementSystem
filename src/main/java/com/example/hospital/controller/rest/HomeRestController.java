@@ -1,17 +1,19 @@
 package com.example.hospital.controller.rest;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
-@RequestMapping("/home")
+
 public class HomeRestController {
 
-    @GetMapping
+    @GetMapping("/home")
     public String home(){
+        var u = SecurityContextHolder.getContext().getAuthentication();
         return "Hello spring";
     }
 }
