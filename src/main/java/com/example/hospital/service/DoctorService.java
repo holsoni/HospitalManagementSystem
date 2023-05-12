@@ -19,6 +19,7 @@ public class DoctorService {
     public List<Doctor> getAll(){
         return repository.findAll();
     }
+
     public void delete(UUID id){
         repository.deleteById(id);
     }

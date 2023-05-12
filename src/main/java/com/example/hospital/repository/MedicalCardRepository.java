@@ -11,4 +11,5 @@ public interface MedicalCardRepository extends JpaRepository<MedicalCard, UUID> 
     List<MedicalCard> findAllByPatientLastNameContains(String lastName);
     List<MedicalCard> findAllByPatientIdContains(String id);
     List<MedicalCard> findAllByConditionContainingIgnoreCase(String condition);
+    List<MedicalCard> findAllByDoctorIdIs(UUID doctor_id);
 }

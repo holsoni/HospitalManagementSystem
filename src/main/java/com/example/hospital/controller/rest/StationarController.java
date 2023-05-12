@@ -33,6 +33,7 @@ public class StationarController {
         return  service.getAll();
     }
 
+
     /*@PostMapping("/addCard")
     void addCard(@RequestBody MedicalCard medicalCard) {
         service.save(medicalCard);
@@ -48,6 +49,10 @@ public class StationarController {
     @GetMapping("searchName")
     public List<MedicalCard> getByNameContains(@RequestParam String name) {
         return  service.getSearch(name);
+    }
+    @GetMapping("getAllByDoctorId")
+    public List<MedicalCard> getAllByDoctorIdIs(@RequestParam UUID id) {
+        return  service.getAllByDoctorIdIs(id);
     }
 
     @GetMapping("searchCondition")
