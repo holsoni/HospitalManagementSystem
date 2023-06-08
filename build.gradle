@@ -7,6 +7,7 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+
 ext['spring.version']='6.0.5'
 configurations {
 	compileOnly {
