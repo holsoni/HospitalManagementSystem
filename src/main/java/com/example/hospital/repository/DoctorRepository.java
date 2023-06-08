@@ -9,6 +9,9 @@ import java.util.UUID;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
-    List<Doctor> findAllByNameContainsAndSurnameContains(String name, String surname);
-    List<Doctor> findAllBySurnameContains( String surname);
+    List<Doctor> findAllByFirstNameContainsAndLastNameContains(String name, String lastname);
+    List<Doctor> findAllByLastNameContains( String lastname);
+
+    List<Doctor> findAllBySpecializationNameContainingIgnoreCase(String specialization);
+    Doctor findDoctorByUserId(UUID id);
 }

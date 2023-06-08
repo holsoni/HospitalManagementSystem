@@ -1,8 +1,11 @@
 <body fxLayout="column">
   <div class="heading" fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Пацієнти</h1>
     <div fxLayout="row">
-      <button>Пошук за направленням</button>
+      <img src="assets/nav-bar/crowd.png">
+      <h1>Пацієнти</h1>
+    </div>
+    <div fxLayout="row">
+      <button disabled="true">Пошук за направленням</button>
       <button disabled="true">Створити нову ЕЗК</button>
     </div>
   </div>
@@ -10,7 +13,7 @@
   <div class="search" fxFlexOffset="2">
     <h3>Пошук пацієнтів за номером телефону в моєму медзакладі</h3>
     <div>
-      <input [formControl]="phone" type="text" fxFlex="34"><button (click)="getByPhone(phone.value ?? '')"><img src="assets/often/loupe.png"> </button>
+      <input [formControl]="phone" placeholder= "Введіть номер телефону" type="text" fxFlex="34"><button (click)="getByPhone(phone.value ?? '')"><img src="assets/often/loupe.png"> </button>
     </div>
   </div>
   <h3 fxFlexOffset="2">Пошук ідентифікованого пацієнта </h3>
@@ -23,30 +26,30 @@
               <div fxFlex="100" fxLayout="row" fxLayoutAlign="start">
                 <div fxFlex="33" fxLayout="column">
                   <label class="required" for="last-name">Прізвище </label>
-                  <input required id="last-name" type="text" formControlName="lastName">
+                  <input required id="last-name" placeholder= "Введіть прізвище"  type="text" formControlName="lastName">
 
                 </div>
                 <div fxFlex="33" fxLayout="column">
                   <label class="required" for="first-name">Ім'я </label>
-                  <input  id="first-name" type="text" formControlName="firstName">
+                  <input  id="first-name" type="text" placeholder= "Введіть ім'я"  formControlName="firstName">
                 </div>
                 <div fxFlex="33" fxLayout="column">
-                  <label class="required" for="date">Дата народження </label>
+                  <label class="required" for="date" placeholder= "Введіть дату народження" >Дата народження </label>
                   <input id="date" type="date" formControlName="dateOfBirth">
                 </div>
               </div>
               <div *ngIf="advancedSearch" fxLayout="row" fxLayoutAlign="start" fxFlexOffset="2">
                 <div fxFlex="33" fxLayout="column">
-                  <label for="fathers">По батькові </label>
-                  <input  id="fathers" type="text" formControlName="fathersName">
+                  <label for="fathers" >По батькові </label>
+                  <input  id="fathers" placeholder= "Введіть по батькові" type="text" formControlName="fathersName">
                 </div>
                 <div fxFlex="33" fxLayout="column">
                   <label for="id">РНОКПП </label>
-                  <input  id="id" type="text" formControlName="id">
+                  <input  id="id" type="text"  placeholder= "Введіть РНОКПП" РНОКППformControlName="id">
                 </div>
                 <div fxFlex="33" fxLayout="column">
                   <label for="code">Номер свідоцтва про народження </label>
-                  <input  id="code" type="text" formControlName="birthCode">
+                  <input  id="code" type="text"  placeholder= "Введіть номер свідоцтва про народження" formControlName="birthCode">
                 </div>
               </div>
 
@@ -60,14 +63,47 @@
         <div fxLayout = "row" fxFlexOffset="2">
           <span *ngIf="!advancedSearch" (click)="changeAdvancedSearch()">Розширений пошук</span>
           <span *ngIf="advancedSearch"  (click)="changeAdvancedSearch()">Сховати</span>
-          <span>Знайти неідентифікованого пацієнта</span>
         </div>
       </div>
     </div>
   </div>
-  <div *ngIf="!patientForm.touched" class="hint" fxFlexOffset="2" fxFlex="100" fxLayoutAlign="center center">
+  <div *ngIf="phone.untouched && patientForm.untouched" class="hint" fxFlexOffset="2" fxFlex="100" fxLayoutAlign="center center">
     <span>
       Введіть в пошук номер телефону або використовуйте розширений пошук
     </span>
+  </div>
+  <div *ngIf="dataSource.length != null">
+    <div fxLayout="row">
+      <div *ngFor="let item of dataSource">
+        <mat-card fxLayout="row" [routerLink]="'/workers/patients/' + item.id + '/profileInfo'">
+          <div fxLayout="column" class="first-clmn" fxLayoutAlign="space-around center">
+            <img *ngIf="item.gender == 'Жіноча'" src="assets/patients/user%20(1).png">
+            <img *ngIf="item.gender == 'Чоловіча'" src="assets/patients/user.png">
+          </div>
+          <div fxLayout="column" class="sec-clmn">
+            <h3> {{getPatientFullName(item)}}</h3>
+            <div fxLayout="column" class="pat-info">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <img *ngIf="item.gender == 'Жіноча'" src="assets/patients/femenine.png">
+                <img *ngIf="item.gender == 'Чоловіча'" src="assets/patients/mars.png">
+                <div>{{item.dateOfBirth | date: 'dd.MM.yyyy'}} ({{getAge(item)}})</div>
+              </div>
+              <div >{{item.currentAddress.city}}, {{item.currentAddress.country}}</div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <img src="assets/patients/telephone-call.png">
+                <div>{{item.phone|phoneNumber}}</div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <img src="assets/doctorProfile/building.png">
+                 <div>{{getAppointmentsNumber(item.id)}}</div>
+              </div>
+              </div>
+            <div fxFlex="90" >
+              <button class="grn-butt" fxFlex="90">Записати до лікаря</button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </body>

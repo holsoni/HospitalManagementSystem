@@ -1,14 +1,14 @@
 <div fxLayout="column" fxFlexOffset="2" fxFlex="98" style="margin:20px">
-  <div class="heading" fxLayout="row" fxLayoutAlign="space-between center" fxFlex="50">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="50">
     <div fxLayout="row" fxLayoutAlign="start center">
       <img class="sm-img" src="assets/nav-bar/hospital-bed%20(3).png">
-      <h1>Стаціонар. Розміщення пацієнта </h1>
+      <h1>Лікування</h1>
     </div>
     <button class="create-btn" (click) = 'openDialog()'>Створити картку</button>
   </div>
   <div fxLayout="row">
     <button class="main-btn" routerLink="./patients" routerLinkActive="main-btn-active" >Карти пацієнтів</button>
-    <button class="main-btn">Вільні ліжка</button>
+    <button class="main-btn" routerLink="./freeBeds" routerLinkActive="main-btn-active">Вільні ліжка</button>
   </div>
   <router-outlet></router-outlet>
 </div>

@@ -19,8 +19,8 @@ export class PatientService {
     return this.http.get<Patient>(url);
   }
 
-  public getAll():Observable<Patient[]> {
-    return this.http.get<Patient[]>(this.url);
+  public getAll():Observable<any[]> {
+    return this.http.get<any[]>(this.url);
   }
 
   public findAllByPhone(phone:string): Observable<Patient[]> {
@@ -35,15 +35,29 @@ export class PatientService {
     return this.http.get<Patient[]>(url);
   }
 
-  public _filterPatients(value: string | null): Observable<Patient[]> {
-    // @ts-ignore
-    const filterValue = value.toLowerCase();
+  public getPatientFullName(patient:any){
+    let firstName = patient.firstName ? patient.firstName : '';
+    let lastName = patient.lastName ? patient.lastName : '';
+    let fathersName = patient.fathersName ? patient.fathersName : '';
 
-    return this.getAll().pipe(
-      map(data => {
-        return data.filter(patient => patient.lastName.toLowerCase().includes(filterValue));
-      })
-    );
+    return `${lastName} ${firstName} ${fathersName}`;
   }
+
+  public getAge(patient: any): number {
+    const birthDate = new Date(patient.dateOfBirth);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    const hasBirthdayPassed = today.getMonth() > birthDate.getMonth() ||
+      (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+
+    if (!hasBirthdayPassed) {
+      age--;
+    }
+
+    return age;
+  }
+
+
 
 }

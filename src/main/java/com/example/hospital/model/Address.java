@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Locale;
 import java.util.UUID;
 @Data
 @AllArgsConstructor
@@ -15,6 +16,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    private String country;
     private String region;
     private String city;
     private String street;

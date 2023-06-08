@@ -41,6 +41,8 @@ public class SecurityConfig {
                 .cors().and().csrf().disable()
                 .authorizeRequests().requestMatchers("/generate-token","/user").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                .requestMatchers("/workers/**").hasAuthority("doctor")
+                .requestMatchers("/adminDashboard/**").hasAuthority("admin")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)

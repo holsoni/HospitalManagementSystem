@@ -5,6 +5,7 @@ import {ProcedureService} from "../../services/procedure/procedure.service";
 import {PatientService} from "../../services/patient/patient.service";
 import {Patient} from "../../model/patient/patient";
 import {Observable} from "rxjs";
+import {AppointmentService} from "../../services/appointment/appointment.service";
 
 @Component({
   selector: 'app-patients',
@@ -21,11 +22,12 @@ export class PatientsComponent {
     birthCode: ['']
   });
   advancedSearch = false;
-  dataSource: Patient[];
-  phone= new FormControl('');
+  dataSource: any[] = [];
+  phone= new FormControl('+380995468220');
 
 
-  constructor(private fb: FormBuilder,private service:PatientService) {
+  constructor(private fb: FormBuilder,private service:PatientService,
+              private appointmentService:AppointmentService) {
   }
 
 
@@ -34,8 +36,9 @@ export class PatientsComponent {
   }
 
   getByPhone(phone:string):void{
-    this.service.findAllByPhone(phone).subscribe(data=> {this.dataSource = data});
-    console.log(this.dataSource);
+    this.service.findAllByPhone(phone).subscribe(data=> {this.dataSource = data;
+    console.log(this.dataSource)});
+    console.log(this.phone.touched)
 
   }
 
@@ -45,10 +48,21 @@ export class PatientsComponent {
     let dateOfBirth = this.patientForm.get("dateOfBirth")?.value;
     this.service.advancedSearch(firstName, lastName, dateOfBirth).subscribe(data => {
       this.dataSource = data;
-      console.log(this.dataSource);
+      console.log(data);
     });
   }
-
+  getPatientFullName(patient:any):string {
+    return this.service.getPatientFullName(patient);
+  }
+  getAge(patient:any):string {
+    return this.service.getAge(patient) + ' років.';
+  }
+  getAppointmentsNumber(id:any):string {
+    let number ;
+   /* this.appointmentService.countAllByPatientId(id).subscribe(data =>{ data != undefined ? number = data: number = 0;
+    console.log(data)})*/
+    return  number + ' візитів';
+  }
   resetSearch(){
     this.patientForm.reset();
   }

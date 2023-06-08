@@ -17,6 +17,7 @@ public class Diagnosis {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    private String code;
     private String diagnosisName;
     private Date created_at;
     private Date updated_at;

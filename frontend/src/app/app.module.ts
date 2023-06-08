@@ -62,6 +62,26 @@ import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { PhoneNumberPipe } from './services/pipes/phone/phone-number.pipe';
+import { AllDoctorsComponent } from './components/all-doctors/all-doctors.component';
+import {jqxSchedulerModule} from "jqwidgets-ng/jqxscheduler";
+import {AppointmentService} from "./services/appointment/appointment.service";
+import {DxSchedulerModule} from "devextreme-angular";
+import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
+import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
+import { ModalCreateAppointmentComponentComponent } from './components/patient-page/modal-create-appointment-component/modal-create-appointment-component.component';
+import { PatientAppointmentsHistoryComponent } from './components/patient-page/patient-appointments-history/patient-appointments-history.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { ModalCreateApptDComponent } from './components/doctor-profile/modal-create-appt-d/modal-create-appt-d.component';
+import { FillMedicalHistoryComponent } from './components/stationar/medicalHistory/fill-medical-history/fill-medical-history.component';
+import {HistoryService} from "./services/history/history.service";
+import { ModalCreateAppHComponent } from './components/stationar/modal-create-app-h/modal-create-app-h.component';
+import { ModalFillDiaryComponent } from './components/stationar/modal-fill-diary/modal-fill-diary.component';
+import { ModalSelectBedComponent } from './components/stationar/modal-select-bed/modal-select-bed.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,30 +121,52 @@ import {MatNativeDateModule} from "@angular/material/core";
     PatientMenuComponent,
     PatientProfileInfoComponent,
     ModalCreatecardComponent,
+    PhoneNumberPipe,
+    AllDoctorsComponent,
+    ModalCreateAppointmentComponentComponent,
+    PatientAppointmentsHistoryComponent,
+    ModalCreateApptDComponent,
+    FillMedicalHistoryComponent,
+    ModalCreateAppHComponent,
+    ModalFillDiaryComponent,
+    ModalSelectBedComponent,
+
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    FlexModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatDialogModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
-  providers: [authInterceptorProviders,
-    UserService,MedicationserviceService,ProcedureService,DoctorProfileService,StationarService],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        FlexModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        MatCardModule,
+        MatDividerModule,
+        MatIconModule,
+        MatDialogModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        jqxSchedulerModule,
+        DxSchedulerModule,
+        ScheduleModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+      MatSnackBarModule
+
+    ],
+  providers: [authInterceptorProviders,DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    AgendaService,
+    MonthAgendaService,
+    UserService,MedicationserviceService,ProcedureService,DoctorProfileService,StationarService,AppointmentService,HistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

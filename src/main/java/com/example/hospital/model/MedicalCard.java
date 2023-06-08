@@ -4,9 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -20,15 +25,24 @@ public class MedicalCard {
     private UUID id;
 
     private String condition;
-    private String symptoms;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "medical_history_id", referencedColumnName = "id")
+    private MedicalHistory medicalHistory;
     @ManyToOne
     private Patient patient;
     private String admission;
     private LocalDateTime dateTime;
+    private Date treatmentCancelledDate;
+    private boolean treatmentCancelled;
     @ManyToOne
     private Doctor doctor;
     private boolean hospitalized;
-    private int bed;
+    @OneToOne(optional = true)
+    private Bed bed;
+
+    @OneToMany
+    private Set<Diary> diarySet;
+    private boolean historyFilled;
 
     private Date createdAt;
     private Date updatedAt;

@@ -9,7 +9,9 @@ body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
-
+img{
+  padding-bottom:30px;
+}
 a {
   color: #92badd;
   display:inline-block;
@@ -45,11 +47,10 @@ h2 {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
-  padding: 30px;
+  padding-top: 30px;
   width: 90%;
   max-width: 450px;
   position: relative;
-  padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;

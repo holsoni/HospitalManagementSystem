@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
@@ -27,13 +28,13 @@ public class Patient {
     private String dateOfBirth;
     @ManyToOne
     private Address placeOfBirth;
-    @OneToMany
-    private List<Address> addresses;
+    @ManyToOne
+    private Address currentAddress;
+    private String imgSrc;
     private String phone;
     private String email;
     private String birthCode;
-    @ManyToOne
-    private Gender gender;
+    private String gender;
     private Date created_at;
     private Date updated_at;
 }

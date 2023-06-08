@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -23,16 +24,22 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+    @ManyToOne
+    @JoinColumn(name = "medical_card_id")
+    private MedicalCard medicalCard;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
     private String complaints;
-    @ManyToOne
-    @JoinColumn(name = "appointment_type_id")
-    private AppointmentType appointmentType;
-    @ManyToOne
-    private Status status;
+    private String appointmentType;
+    private String status;
     private String description;
-    private Time startTime;
-    private Time endTime;
+
+    @Column(name = "start_time", columnDefinition = "TIMESTAMP")
+    private LocalDateTime startTime;
+
+    @Column(name = "end_time", columnDefinition = "TIMESTAMP")
+    private LocalDateTime endTime;
     private Date created_at;
     private Date updated_at;
-
 }

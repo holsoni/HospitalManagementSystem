@@ -2,8 +2,8 @@
   <div fxFlexOffset="1.5"  class="profile-picture" fxLayout="column" fxFlex="20">
     <div class="card" fxLayout="column" fxLayoutAlign="center space-around">
       <div fxLayout="column" fxLayoutAlign="center-around center">
-        <img src="https://cdn-icons-png.flaticon.com/512/921/921129.png">
-        <button><img src="assets/often/edit-text.png">Редагувати аватар </button>
+        <img *ngIf="currentDoctor.gender == 'Жіноча'" src="https://cdn-icons-png.flaticon.com/512/921/921129.png">
+        <img *ngIf="currentDoctor.gender == 'Чоловіча'" src="assets/doctorProfile/doctor%20(1).png">
       </div>
     </div>
 
@@ -11,7 +11,7 @@
       <h2>Авторизація</h2>
       <div class="login" fxLayout="column" fxLayoutAlign="start start">
         <label>Логін</label>
-        <input style="width:90%" disabled type="text" placeholder="email@gmail.com">
+        <input style="width:90%" disabled type="text" placeholder="{{currentDoctor.user.username}}">
       </div>
     </div>
     <div  class="card" fxLayout="column" fxLayoutAlign="space-around center">
@@ -19,23 +19,23 @@
       <div class="general" fxFlexOffset="3" fxLayout="column" fxLayoutAlign="space-between ">
         <div fxLayout="row" fxLayoutAlign="space-between">
           <label>Прізвище</label>
-          <input  disabled type="text" placeholder="Прізвище">
+          <input  disabled type="text" placeholder="{{currentDoctor.lastName}}">
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between">
           <label>Ім'я</label>
-          <input disabled type="text" placeholder="Ім'я">
+          <input disabled type="text" placeholder="{{currentDoctor.firstName}}">
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between">
           <label>По батькові</label>
-          <input disabled type="text" placeholder="По батькові">
+          <input disabled type="text" placeholder="{{currentDoctor.fathersName}}">
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between">
           <label>Дата народження</label>
-          <input disabled type="text" placeholder="Дата народження">
+          <input disabled type="text" placeholder="{{currentDoctor.dateOfBirth}}">
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between">
           <label>Моб. телефон</label>
-          <input disabled type="text" placeholder="Моб. телефон">
+          <input disabled type="text" placeholder="{{currentDoctor.phone}}">
         </div>
       </div>
     </div>

@@ -48,6 +48,13 @@ import {PatientPageComponent} from "./components/patient-page/patient-page.compo
 import {
   PatientProfileInfoComponent
 } from "./components/patient-page/patient-profile-info/patient-profile-info.component";
+import {AllDoctorsComponent} from "./components/all-doctors/all-doctors.component";
+import {
+  PatientAppointmentsHistoryComponent
+} from "./components/patient-page/patient-appointments-history/patient-appointments-history.component";
+import {
+  FillMedicalHistoryComponent
+} from "./components/stationar/medicalHistory/fill-medical-history/fill-medical-history.component";
 
 
 const routes: Routes = [
@@ -59,6 +66,7 @@ const routes: Routes = [
 
   {path:'workers', component:DoctorsMainComponent,canActivate:[DoctorGuard],
     children:[
+              {path:'doctors',component: AllDoctorsComponent},
               {path: 'doctorProfile',  component: DoctorProfileComponent,
                 children:[
                           {path: '', redirectTo: 'cases/appointments', pathMatch: 'full'},
@@ -73,8 +81,9 @@ const routes: Routes = [
               { path: 'schedule', component: ScheduleComponent },
               { path: 'patients/:id', component: PatientPageComponent,
                   children:[{
-                          path: 'profileInfo',component:PatientProfileInfoComponent
-                  }]},
+                          path: 'profileInfo',component:PatientProfileInfoComponent},
+                    {path: 'appointmentsHistory',component:PatientAppointmentsHistoryComponent}
+                  ]},
               {path:'doctorProfile/edit',component:ProfileInfoComponent},
               { path: 'calendar', component: CalendarComponent },
               { path: 'patients', component: PatientsComponent },
@@ -88,7 +97,8 @@ const routes: Routes = [
                 children:[
                   {path: 'patients', component: PatientCardsComponent},
                   {path: 'freeBeds', component: FreeBedsComponent}]},
-              { path: 'serviceManagement', component: ServiceManagementComponent,
+      {path: 'stationar/fillHistory', component: FillMedicalHistoryComponent},
+      { path: 'serviceManagement', component: ServiceManagementComponent,
                       children:[
                         {path: '', redirectTo: 'hospital/list', pathMatch: 'full'},
                         {path:'hospital',
@@ -96,7 +106,8 @@ const routes: Routes = [
                               {path: 'info', component: ServiceInfoComponent},
                               {path: 'list', component: AllHospitalServicesComponent}]},
                         {path:'groups',component:ServicesGroupsComponent},
-                        {path:'protocols',component:ProtocolsComponent}]}]}
+                        {path:'protocols',component:ProtocolsComponent}]}]},
+  {path:'', redirectTo:"/login", pathMatch:"full"}
 ];
 
 @NgModule({

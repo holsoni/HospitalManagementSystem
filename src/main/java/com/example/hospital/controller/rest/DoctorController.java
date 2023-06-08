@@ -7,6 +7,7 @@ import com.example.hospital.service.MedicalFormService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -23,6 +24,19 @@ public class DoctorController {
     @GetMapping("/getAll")
     public List<Doctor> getAll(){
         return doctorService.getAll();
+    }
+
+    @GetMapping("/getBySpecialization")
+    public List<Doctor> getBySpecialization(@RequestParam String spec){
+        return doctorService.getAllBySpecialization(spec);
+    }
+    @GetMapping("/getByLastNameContains")
+    public List<Doctor> getAllBySurnameContains(@RequestParam String lastName){
+        return doctorService.getAllBySurnameContains(lastName);
+    }
+    @GetMapping("/getByUserId")
+    public Doctor getByUserId(@RequestParam UUID id){
+        return doctorService.getByUserId(id);
     }
 
     @GetMapping("/medicalForms/getAll")

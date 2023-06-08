@@ -19,18 +19,18 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    private String firstName;
     private String fathersName;
-    private String surname;
-    @OneToMany
-    private Set<Schedule> schedule;
+    private String lastName;
     @ManyToOne
     @JoinColumn(name = "specialization_id")
     private Specialization specialization;
     private String dateOfBirth;
     private String phone;
-    @ManyToOne
-    private Gender gender;
+    private String gender;
     private Date created_at;
     private Date updated_at;
 }

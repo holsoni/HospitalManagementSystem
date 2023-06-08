@@ -19,7 +19,7 @@ public class Specialization {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String specializationName;
+    private String name;
     private Date created_at;
     private Date updated_at;
 }

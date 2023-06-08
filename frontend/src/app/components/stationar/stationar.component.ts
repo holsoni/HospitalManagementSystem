@@ -23,9 +23,6 @@ export class StationarComponent{
 
   openDialog() {
     this.dialog.open(ModalCreatecardComponent, {
-      data: {
-        animal: 'panda',
-      },
     });
   }
 }

@@ -1,7 +1,7 @@
 
 <div fxLayout="column" >
   <div class="header">
-    <h1>Сторінка лікаря: Ім'я Прізвище</h1>
+    <h1>Сторінка лікаря: {{currentDoctor.lastName}} {{currentDoctor.firstName}} {{currentDoctor.fathersName}}</h1>
   </div>
   <div fxLayout="row">
 <div fxLayout="column" fxLayoutAlign="center center">
@@ -9,16 +9,17 @@
   <div fxLayout="row">
   <div class="profile-card" fxLayout="column" >
     <div class="profile-info" fxLayout= "column" fxLayoutAlign="space-around center">
-      <img src="https://cdn-icons-png.flaticon.com/512/921/921129.png" alt=""/>
-      <div style="background-color: #28a745;width: 100%"> Код співробітника: </div></div>
+      <img *ngIf="currentDoctor.gender == 'Жіноча'" src="https://cdn-icons-png.flaticon.com/512/921/921129.png">
+      <img *ngIf="currentDoctor.gender == 'Чоловіча'" src="assets/doctorProfile/doctor%20(1).png">
+      <div style="background-color: #28a745;width: 100%"> Код співробітника: {{currentDoctor.id}}</div></div>
 
     <div  fxFlex="70" fxLayout="column" fxLayoutAlign="center center">
       <div fxLayout="row" fxLayoutAlign="end">
         <button class="button oval first light-blue"  routerLink="/workers/doctorProfile/edit">
           <img src="assets/doctorProfile/avatar%20(1).png" alt=""  >Профіль
         </button>
-        <button class="button oval first orange">
-          <img src="assets/doctorProfile/upcoming%20(1).png">Запланувати
+        <button class="button oval first orange" (click)="openDialog()">
+          <img src="assets/doctorProfile/upcoming%20(1).png" >Запланувати
         </button>
       </div>
       <button fxFlexOffset="2" class="button oval dark-grey">

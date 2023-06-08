@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class LeftNavBarComponent {
     menu=[{id:1,
-    name:"doctorProfile",
+    name:"allDoctors",
     imgSrc:"assets/nav-bar/stethoscope.png",
-    route:"doctorProfile"},
+    route:"doctors"},
       {id:2,
         name:"calendar",
         imgSrc:"assets/nav-bar/calendar (6).png",
