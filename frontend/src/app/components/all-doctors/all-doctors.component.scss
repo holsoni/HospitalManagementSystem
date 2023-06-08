@@ -1,0 +1,81 @@
+.doctors{
+  margin:34px 20px 20px 2%;
+}
+h1{
+  color:#585858;
+  margin:0;
+  padding:0;
+}
+.first-inp input{
+  margin-left: 20px;
+}
+
+.filters select{
+  background-color: #fafafa;
+  border: 1px solid #c8c7c7;
+  color: #646464;
+  padding: 7px;
+  height: 35px;
+  width:30%;
+  outline:none;
+}
+.filters input{
+  background-color: #fafafa;
+  border: 1px solid #c8c7c7;
+  color: #646464;
+  margin-left: 10px;
+  padding: 7px;
+  height: 35px;
+  width:95%;
+  outline:none;
+}
+.filters button{
+  height: 35px;
+  outline: none;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border:2px solid #c5c5c7;
+  width:35px;
+}
+
+.filters img{
+  width:15px;
+  height:15px;
+}
+
+   .patient-card {
+     background-color: #fdfdfd;
+     border-radius: 5px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     padding: 16px;
+   }
+
+.profile-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.profile-image img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+.mat-card-title{
+  margin-bottom:10px;
+}
+.info-row {
+  display: flex;
+}
+
+.info-label {
+  font-weight: 500;
+  width: 200px;
+  color:#5fbae9;
+}
+
+.info-value {
+  flex: 1;
+}
+
+

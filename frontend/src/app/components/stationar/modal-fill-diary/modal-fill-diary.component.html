@@ -1,0 +1,93 @@
+<div class="main" fxLayout="column">
+  <div fxLayout = 'row' fxFlex="100"fxLayoutAlign="center" >
+    <h1  mat-dialog-title>Заповнення щоденника</h1>
+
+  </div>
+  <hr>
+  <div mat-dialog-content>
+    <form fxLayout="column" [formGroup]="diaryForm" (ngSubmit)="onSubmit()">
+      <div fxLayout="column">
+        <label>Стан пацієнта:</label>
+        <mat-form-field class="example-full-width">
+          <mat-select formControlName="state">
+            <mat-option value="Задовільний">Задовільний</mat-option>
+            <mat-option value="Нормальний">Нормальний</mat-option>
+            <mat-option value="Важкий">Важкий</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column">
+        <label>Детальніший опис пацієнта: </label>
+        <mat-form-field class="example-full-width">
+          <textarea matInput formControlName = 'stateDescription' placeholder="Оберіть стан пацієнта:"></textarea>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <label>Лікування: </label>
+        <mat-form-field class="example-full-width">
+          <textarea matInput formControlName = 'treatment' placeholder="Опишіть проведені лікування:"></textarea>
+            </mat-form-field>
+      </div>
+      <div fxLayout = "row" fxLayoutAlign="space-around center">
+      <div fxLayout="column" fxFlex="40">
+        <label>Дата заповнення:</label>
+      <!--  <mat-form-field class="example-full-width">
+       <input matInput type="date" id="exampleInput" name="input" formControlName="date"
+             [min]="minDate" [max]="maxDate"/>
+        </mat-form-field>-->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput formControlName="date" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error fxFlex="100" *ngIf="diaryForm.get('date')?.invalid && diaryForm.get('date')?.touched">
+            Щоденник заданої дати вже існує.
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" fxFlex="40">
+        <label>Температура:</label>
+        <mat-form-field >
+          <input required matInput type="number"  formControlName="temperature">
+        </mat-form-field>
+      </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div fxLayout="column" fxFlex="40">
+        <label>Верхній тиск:</label>
+          <mat-form-field class="example-full-width">
+            <input required type="number" matInput formControlName="pressureTop">
+          </mat-form-field>
+        </div>
+      <div fxLayout="column" fxFlex="40" >
+        <label>Нижній тиск:</label>
+          <mat-form-field class="example-full-width">
+            <input required type="number" matInput formControlName="pressureBottom">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div fxLayout="column" fxFlex="40" >
+        <label>Пульс, уд/хв</label>
+          <mat-form-field class="example-full-width">
+            <input required type="number" matInput formControlName="pulse">
+          </mat-form-field>
+        </div>
+              <div fxLayout="column" fxFlex="40" >
+        <label>Сатурація, %</label>
+          <mat-form-field class="example-full-width">
+            <input required type="number" matInput formControlName="saturation">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <hr>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <button class="submit" type="submit" [disabled]="!diaryForm.valid">Створити</button>
+      <button class="gray-btn" (click)="cancel()">Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>

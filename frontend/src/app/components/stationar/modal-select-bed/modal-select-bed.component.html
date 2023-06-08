@@ -1,0 +1,25 @@
+<div class="main" fxLayout="column">
+  <div fxLayout = 'row' fxFlex="100" fxLayoutAlign="center" >
+    <h1  mat-dialog-title>Госпіталізація пацієнта</h1>
+
+  </div>
+  <hr>
+  <div mat-dialog-content>
+    <form fxLayout="column" (ngSubmit)="onSubmit()">
+      <div fxLayout="column">
+        <label>Оберіть ліжко:</label>
+        <mat-form-field>
+          <mat-select required [formControl]="bedControl" placeholder="Оберіть ліжко:">
+            <mat-option *ngFor="let bed of beds" [value]="bed">{{ bed.number }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <hr>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <button class="submit" type="submit" [disabled]="!bedControl.valid">Госпіталізувати</button>
+        <button class="gray-btn" (click)="cancel()">Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>

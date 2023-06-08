@@ -1,0 +1,60 @@
+<div fxLayout = "column" class="doctors" >
+  <div  fxLayout="row" class="heading" fxLayoutAlign=" center">
+    <img src="assets/nav-bar/catalog.png">
+    <h1>Співробітники</h1>
+  </div>
+    <div fxFlexOffset="2" class="filters" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row"  fxFlex="45">
+      <input  [formControl]="specializationControl" placeholder="Пошук лікаря за спеціальістю" type="text" >
+        <button (click)="getBySpecialty()"><img src="assets/often/loupe.png"> </button>
+     </div>
+      <div fxLayout="row"  fxFlex="45">
+      <input [formControl]="nameControl" placeholder="Пошук лікаря за ПІБ">
+        <button (click)="getByName()"><img src="assets/often/loupe.png"> </button>
+      </div>
+      </div>
+  <div fxLayout="row" fxFlexOffset="2" >
+    <div *ngIf ="dataSource.length == 0">
+      За вашим запитом нічого не знайдено! Спробуйте ще раз.
+    </div>
+    <div *ngFor="let item of dataSource" fxFlex="25">
+      <mat-card fxLayout="column" class="patient-card">
+        <div class="profile-image">
+          <div *ngIf="item.imgSrc== null">
+            <img *ngIf="item.gender == 'Жіноча'" src="assets/patients/user%20(1).png">
+            <img *ngIf="item.gender == 'Чоловіча'" src="assets/patients/user.png">
+          </div>
+        </div>
+        <mat-card-title fxLayoutAlign="center center">{{item.lastName}} {{item.firstName}} {{item.fathersName}}</mat-card-title>
+
+        <div class="info-row">
+          <div class="info-label">Tелефон</div>
+          <div class="info-value">{{ item.phone | phoneNumber }}</div>
+        </div>
+        <hr>
+        <div class="info">
+        <div class="info-row">
+          <div class="info-label">E-mail</div>
+          <div class="info-value">{{ item.user.username }}</div>
+        </div>
+        <hr>
+
+        <div class="info-row">
+          <div class="info-label">Відділення</div>
+          <div class="info-value"></div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Спеціалізація</div>
+          <div class="info-value">{{ item.specialization.name }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Ідентифікатор в системі</div>
+          <div class="info-value">{{ item.id }}</div>
+        </div>
+        </div>
+      </mat-card>
+
+
+    </div>
+  </div>
+</div>

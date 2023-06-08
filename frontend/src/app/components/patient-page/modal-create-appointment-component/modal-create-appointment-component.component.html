@@ -1,0 +1,101 @@
+<div class="main" fxLayout="column">
+  <div fxLayout = 'row' fxFlex="100" fxLayoutAlign="center" >
+    <h1  mat-dialog-title>Планування прийому</h1>
+
+  </div>
+  <hr>
+  <div mat-dialog-content >
+    <form fxLayout="column" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+     <!-- <div fxLayout="column">
+        <label>Пацієнт</label>
+        <mat-form-field class="example-full-width">
+          <input type="text"
+                 placeholder="Оберіть пацієнта"
+                 matInput
+                 formControlName="patient"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option  *ngFor="let option of filteredPatients | async" [value]="option"
+                         (onSelectionChange)="setPatient(option)">
+              {{getPersonFullName(option)}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>-->
+      <div fxLayout="column">
+        <label>Тип прийому</label>
+        <mat-form-field class="example-full-width">
+          <mat-select formControlName = 'appointmentType'>
+            <mat-option  value = 'Процедура'>Процедура</mat-option>
+            <mat-option value = 'Огляд'>Огляд</mat-option>
+            <mat-option value = 'Консультація'>Консультація</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column">
+        <label>Дата</label>
+        <mat-form-field class="example-full-width">
+          <input matInput type="date"  name="input" formControlName="date"
+                 placeholder="Дата прийому" [min]="minDate" [max]="maxDate"/>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+
+        <div fxLayout="column" fxFlex="40">
+          <label>Час початку</label>
+          <mat-form-field class="example-full-width">
+            <input matInput type="time"  name="input" formControlName="startTime"
+                   placeholder="Час початку прийому"/>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column"  fxFlex="40" >
+          <label>Час закінчення</label>
+          <mat-form-field>
+            <input matInput type="time"  name="input" formControlName="endTime"
+                   placeholder="Час закінчення прийому"/>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="column">
+        <label>Скарги пацієнта</label>
+        <mat-form-field >
+          <textarea matInput type="text"  name="input" formControlName="complaints"
+                 placeholder="Скарги пацієнта, якщо такі є"></textarea>
+        </mat-form-field>
+      </div>
+
+
+     <!-- <div fxLayout="column">
+        <label>Лікар</label>
+        <mat-form-field class="example-full-width">
+          <input type="text"
+                 placeholder="Оберіть лікаря"
+                 matInput
+                 formControlName="doctor"
+                 [matAutocomplete]="autod">
+          <mat-autocomplete #autod="matAutocomplete">
+            <mat-option  *ngFor="let option of filteredDoctors | async" [value]="option"
+                         (onSelectionChange)="setDoctor(option)">
+              {{getPersonFullName(option)}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>-->
+      <!--<div fxLayout="column">
+        <label>Підстава звернення</label>
+        <mat-form-field class="example-full-width">
+          <mat-select formControlName="admission">
+            <mat-option value = 'Самозвернення'>Самозвернення</mat-option>
+            <mat-option value = 'Бригадою швидкої допомоги<'>Бригадою швидкої допомоги</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>-->
+      <hr>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <button type="submit">Запланувати</button>
+        <button class="gray-btn" (click)="cancel()">Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>

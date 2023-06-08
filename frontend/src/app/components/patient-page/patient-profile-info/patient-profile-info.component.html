@@ -1,0 +1,89 @@
+<div fxLayout="column" fxFlexFill class="main">
+    <div fxLayout="column" >
+      <div fxLayout="row" fxLayoutAlign="space-between center ">
+        <h2>Персональні дані</h2>
+      </div>
+      <hr>
+      <div class="pers-info">
+        <div fxLayout="row" fxLayoutAlign="space-between center ">
+          <div fxLayout="column">
+            <label for="lastname">Прізвище</label>
+            <input id="lastname" type="text" placeholder= "{{patient.lastName}}" disabled="true">
+          </div>
+          <div fxLayout="column" >
+            <label for="firstname">Ім'я</label>
+            <input id="firstname" type="text" [value]="patient.firstName" disabled="true">
+          </div>
+          <div fxLayout="column" >
+            <label for="fathers">По батькові</label>
+            <input id="fathers" type="text" [value]="patient.fathersName" disabled="true">
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center ">
+          <div fxLayout="column" >
+            <label for="gender">Стать</label>
+            <input id="gender" type="text" placeholder= "{{patient.gender}}" disabled="true">
+          </div>
+          <div fxLayout="column" >
+            <label for="dateOfBirth">Дата народження</label>
+            <input id="dateOfBirth" type="text" [value]="patient.dateOfBirth" disabled="true">
+          </div>
+          <div fxLayout="column">
+            <label for="placeOfBirth">Місце народження</label>
+            <input id="placeOfBirth" type="text" [value]="patient.placeOfBirth.city" disabled="true">
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center ">
+          <div fxLayout="column">
+            <label for="countryOfBirth">Країна народження</label>
+            <input id="countryOfBirth" type="text" placeholder= "{{patient.placeOfBirth.country}}" disabled="true">
+          </div>
+          <div fxLayout="column">
+            <label for="citizenship">Громадянство</label>
+            <input id="citizenship" type="text" [value]="patient.citizenship" disabled="true">
+          </div>
+          <div fxLayout="column">
+            <label for="residence">Резидент</label>
+            <input id="residence" type="text" [value]="patient.residence" disabled="true">
+          </div>
+        </div>
+      </div>
+    </div>
+  <div fxLayout="column" >
+    <div fxLayout="row" fxLayoutAlign="space-between center ">
+      <h2>Контактна інформація</h2>
+    </div>
+    <hr>
+    <div class="cont-info">
+      <div fxLayout="row" fxLayoutAlign="space-between center ">
+        <div fxLayout="column">
+          <label for="phone">Номер телефону</label>
+          <input id="phone" type="text" placeholder= "{{patient.phone}}" disabled="true">
+        </div>
+        <div fxLayout="column" >
+          <label for="email">Електронна пошта</label>
+          <input id="email" type="text" [value]="patient.email" disabled="true">
+        </div>
+      </div>
+
+  </div>
+    <div fxLayout="column" >
+      <div fxLayout="row" fxLayoutAlign="space-between center ">
+        <h2>Пільгові категорії</h2>
+      </div>
+      <hr>
+      <div class="cont-info">
+        <div fxLayout="row" fxLayoutAlign="space-between center ">
+          <div fxLayout="column">
+            <label for="phone">Номер телефону</label>
+            <input id="phone" type="text" placeholder= "{{patient.phone}}" disabled="true">
+          </div>
+          <div fxLayout="column" >
+            <label for="email">Електронна пошта</label>
+            <input id="email" type="text" [value]="patient.email" disabled="true">
+          </div>
+        </div>
+
+      </div>
+</div>
+</div>

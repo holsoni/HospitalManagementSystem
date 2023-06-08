@@ -1,0 +1,213 @@
+<div class="main" fxLayout="column" fxFlex="100">
+  <div class="heading" fxLayout="row">
+    <img src="/assets/cards/editing.png">
+    <h1>Заповнення карти пацієнта</h1>
+  </div>
+  <div fxLayout="row" class="content">
+    <div fxLayout="column" class="info" >
+    <mat-card fxLayout="column">
+      <img src="{{card.patient.imgSrc}}"/>
+      <div fxLayout="column" >
+        <mat-card-title >{{card.patient.lastName}} {{card.patient.firstName}} {{card.patient.fathersName}}</mat-card-title>
+        <div fxLayout="column" class="info-c1">
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between ">
+          <label>Номер телефону: </label>
+          <div>{{card.patient.phone | phoneNumber}}</div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between ">
+          <label>Дата народження: </label>
+          <div>{{card.patient.dateOfBirth|date: 'dd.MM.yyyy'}}</div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between ">
+          <label>Дата початку лікування: </label>
+          <div>{{card.dateTime|date: 'dd.MM.yyyy'}}</div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between ">
+          <label>Діагноз: </label>
+          <div fxLayout="row" fxLayoutAlign="center space-around"*ngIf = "card.medicalHistory.diagnosis == null" class="attention">
+            <mat-icon class="attention-icon">warning</mat-icon>
+            <div>Діагноз не встановлено</div>
+          </div>
+          <div *ngIf = "card.medicalHistory.diagnosis != null" >{{card.medicalHistory.diagnosis.diagnosisName}}</div>
+        </div>
+        </div>
+      </div>
+    </mat-card >
+  </div>
+
+  <mat-card fxFlex = "90" fxFlexOffset="2">
+    <div fxLayout="column" >
+      <form fxLayout="column" [formGroup]="historyForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-card-title>Заповнення історії хвороби</mat-card-title>
+      </div>
+
+      <div fxLayout="column" class="form">
+        <div fxLayout="column">
+            <h2>Cимптоми:</h2>
+          <mat-form-field fxFlex="90">
+            <textarea matInput formControlName="symptoms" placeholder="Введіть симптоми пацієнта, які були присутні під час лікування:"></textarea>
+          </mat-form-field>
+
+
+        </div>
+        <hr>
+        <div fxLayout="column">
+          <h2>Заповніть призначене лікування:</h2>
+          <div fxLayout="column" formArrayName="procedures">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3>Заповніть проведені процедури:</h3>
+              <button type="button" class="btn-add" mat-button color="#5e9fdb" (click)="addProcedure()">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <div *ngFor="let procedure of procedures.controls; let i = index" fxLayout="row" fxLayoutAlign="space-between center ">
+              <mat-form-field fxFlex="90">
+                <mat-select [formControlName]="i" >
+                  <mat-option value="Оберіть процедури:">Оберіть процедури:</mat-option>
+                  <mat-option *ngFor="let proc of proceduresList" [value]="proc">
+                    {{proc.procedureName}} |Група "{{proc.group.name}}"
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button type="button" class="btn-rmv" mat-button color="#5e9fdb" (click)="removeProcedure(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div fxLayout="column"  formArrayName="medications">
+            <div fxLayout="row" fxLayoutAlign="space-between center" >
+              <h3>Заповніть призначене лікування:</h3>
+              <button type="button" class="btn-add" mat-button color="#5e9fdb" (click)="addMedication()">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <div *ngFor="let medication of medications.controls; let i = index" fxLayout="row" fxLayoutAlign="space-between center ">
+              <mat-form-field fxFlex="90">
+                <mat-select [formControlName]="i">
+                  <mat-option>Оберіть медикамент:</mat-option>
+                  <mat-option *ngFor="let meds of medicationList" [value]="meds" >
+                    {{ meds.name }} {{ meds.dayDose }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <button type="button" class="btn-rmv" mat-button color="#5e9fdb" (click)="removeMedication(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <h2>Щоденники:</h2>
+            <button  type="button"class="btn-add" mat-button color="#5e9fdb" (click)="addDiary()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <table class="tab" mat-table [dataSource]="getCardDiaries()">
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Дата </th>
+              <td mat-cell *matCellDef="let element"> {{element.date| date:"dd.MM.yyyy"}} </td>
+            </ng-container>
+            <ng-container matColumnDef="state">
+              <th mat-header-cell *matHeaderCellDef> Стан </th>
+              <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stateDescription">
+              <th mat-header-cell *matHeaderCellDef>Детальний опис стану </th>
+              <td mat-cell *matCellDef="let element">{{element.stateDescription}} </td>
+            </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="treatment">
+              <th mat-header-cell *matHeaderCellDef> Лікування </th>
+              <td mat-cell *matCellDef="let element"> {{element.treatment}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <tr mat-header-row *matHeaderRowDef="displayedColDiaries"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColDiaries;"></tr>
+          </table>
+        </div>
+        <hr>
+        <div fxLayout="column">
+          <h2>Відмітки щодо видачі листків непрацездатності:</h2>
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field> <input formControlName="efficiencyPaperNumber" type="text"matInput placeholder="Номер:">
+              <mat-error *ngIf="historyForm.get('efficiencyPaperNumber').invalid">
+                Номер повинен складатись з 8 знаків:РК112233
+              </mat-error></mat-form-field>
+            <mat-form-field><input formControlName="efficiencyPaperStartDate" matInput type="date"> </mat-form-field>
+            <mat-form-field>  <input formControlName="efficiencyPaperEndDate" matInput type="date"> </mat-form-field>
+          </div>
+        </div>
+        <hr>
+        <div fxLayout="column">
+          <h2>Працездатність:</h2>
+          <mat-form-field>
+            <mat-select formControlName="efficiency" placeholder="Оберіть працездатність після лікування">
+              <mat-option value="Відновлена повністю">Відновлена повністю</mat-option>
+              <mat-option value="Знижена">Знижена</mat-option>
+              <mat-option value="Тимчасово втрачена">Тимчасово втрачена</mat-option>
+              <mat-option value="Стійко втрачена">Стійко втрачена</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr>
+        <div fxLayout="column">
+          <h2>Результат медичного лікування:</h2>
+          <mat-form-field>
+            <mat-select formControlName="treatmentResult" placeholder="Оберіть результат медичного лікування">
+              <mat-option value="З одужанням">З одужанням</mat-option>
+              <mat-option value="З поліпшенням">З поліпшенням</mat-option>
+              <mat-option value="З погіршенням">З погіршенням</mat-option>
+              <mat-option value="Без змін">Без змін</mat-option>
+              <mat-option value="Помер(ла)">Помер(ла)</mat-option>
+              <mat-option value="Переведений(а) до іншого закладу охорони здоров'я">Переведений(а) до іншого закладу охорони здоров'я</mat-option>
+              <mat-option value="Здоровий(а)">Здоровий(а)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr>
+        <div fxLayout="column">
+          <h2>Діагноз:</h2>
+          <mat-form-field fxFlex="90">
+            <mat-select formControlName="diagnosis" placeholder="Оберіть  діагноз">
+
+              <mat-option *ngFor="let diagnosis of diagnosisList" [value]="diagnosis">
+                {{diagnosis.code}} {{diagnosis.diagnosisName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <hr>
+        <div fxLayout="column">
+          <h2>Додаткові діагнози:</h2>
+          <mat-form-field>
+            <mat-select formControlName="additionalDiagnosis" placeholder="Оберіть додатковий діагноз">
+              <mat-option value="Ускладнення основного діагнозу">Ускладнення основного діагнозу</mat-option>
+              <mat-option value="Супутнє захворювання">Супутнє захворювання</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+      </div>
+        <div fxLayout="row" fxFlex="100" class="buttons" fxLayoutAlign="space-around center">
+          <mat-checkbox   formControlName="isMedicalHistoryFilled" fxLayout="row" fxLayoutAlign="center center">
+           <h3> Історія хвороби заповнена і пацієнт готовий до виписки?</h3>
+          </mat-checkbox>
+        </div>
+
+        <div fxLayout="row" fxFlex="100" class="buttons" fxLayoutAlign="space-around center">
+          <button [disabled]="!historyForm.valid"type="submit">Заповнити</button>
+          <button class="gray-btn" routerLink="/workers/stationar">Скасувати</button>
+        </div>
+      </form>
+    </div>
+    </mat-card>
+  </div>
+</div>

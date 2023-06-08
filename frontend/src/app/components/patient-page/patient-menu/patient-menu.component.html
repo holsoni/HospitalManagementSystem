@@ -1,0 +1,40 @@
+
+<div fxLayout="column" class="menu" >
+
+  <div class="pers-info" fxLayout="column">
+  <h2 fxFlexOffset="5">{{patient.lastName}} {{patient.firstName}} {{patient.fathersName}}</h2>
+  <div *ngIf="patient.phone != null"> {{patient.phone}}</div>
+  <div *ngIf="patient.phone == null"> Телефон не вказано</div>
+  <div fxFlexOffset="7">
+    <img *ngIf="patient.gender == 'Жіноча'" src="assets/patients/femenine.png">
+    <img *ngIf="patient.gender == 'Чоловіча'" src="assets/patients/mars.png">
+  </div>
+  <div fxLayout="column" class="two-btn" fxFlexOffset="10" fxFill>
+    <button (click) = "planAppointment()"> <img src="/assets/nav-bar/calendar%20(6).png"> Запланувати прийом </button>
+  </div>
+  </div>
+    <mat-accordion fxFlexFill>
+      <ng-container *ngFor="let item of menu">
+        <mat-expansion-panel *ngIf="item.items!= null; else notExpands"
+                             (opened)="item.open = true"
+                             (closed)="item.open = true">
+          <mat-expansion-panel-header>
+          <mat-panel-title>{{item.title}}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="submenu" *ngFor ="let submenu of item.items">
+            <div routerLink="{{submenu.link}}">
+              {{submenu.title}}
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <ng-template #notExpands>
+          <mat-card class="not-expanding-menu">
+            <mat-card-title routerLink="{{item.link}}">
+              {{item.title}}
+            </mat-card-title>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+    </mat-accordion>
+</div>
+

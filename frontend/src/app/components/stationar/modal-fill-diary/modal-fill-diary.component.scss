@@ -1,0 +1,83 @@
+[type=submit]{
+  height: 30px;
+  width: 100px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #5e9fdb;
+  color: white;
+  font-weight: bold;
+}
+button.submit:disabled {
+  background-color: #d3d3d3;
+  color: #666777;
+  cursor: none;
+}
+.gray-btn{
+  width: 100px;
+  height: 30px;
+  background-color: #ffffff;
+  color: #666777;
+  border: 1px solid #d3d3d3;
+  font-weight: 500;
+  cursor: pointer;
+}
+h1#mat-mdc-dialog-title-0.mat-mdc-dialog-title.mdc-dialog__title{
+  color:#666777;
+  font-weight:400;
+  font-size: 27px;
+  margin:0px;
+  text-align: center;
+  padding:0;
+}
+
+h1{
+  color:#666777;
+}
+.main{
+  width:500px;
+  height:100%;
+}
+.mat-mdc-dialog-container {
+  box-shadow: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+  padding:5px;
+}
+
+textarea {
+  width:100%;
+  height: 100px;
+  background-color: whitesmoke;
+  outline: none;
+}
+
+input {
+  outline: none;
+
+  width: 100%;
+  height:56px;
+  background-color: whitesmoke;
+}

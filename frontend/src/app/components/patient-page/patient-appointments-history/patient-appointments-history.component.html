@@ -1,0 +1,58 @@
+<div fxLayout="column" class="main" fxFlex="100" >
+  <div class="search">
+    <div fxLayout="row">
+      <form fxFlex="100%">
+
+        <select fxFlex="40%"  [value]="selected" >
+          <option value="Сортувати за:" >Сортувати за:</option>
+          <option value="Дата за зростанням">Дата за зростанням</option>
+          <option value="Дата за спаданням">Дата за спаданням</option>
+          <option value="Лікарі в алфавітному порядку">Лікарі в алфавітному порядку</option>
+          <option value="Майбутні">Майбутні</option>
+          <option value="Минулі">Минулі</option>
+        </select>
+      </form>
+    </div>
+  </div>
+
+  <div class = "tab" >
+    <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="date" >
+        <th class="th-name" mat-header-cell *matHeaderCellDef> <a>Дата </a></th>
+        <td mat-cell *matCellDef="let element"> {{element.startTime | date:'dd.MM.yyyy HH:mm'}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="doctor">
+        <th mat-header-cell *matHeaderCellDef> Patient </th>
+        <td mat-cell *matCellDef="let element">{{element.doctor.lastName}} {{element.doctor.firstName}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Weight Column &ndash;&gt;
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Тип прийому</th>
+        <td mat-cell *matCellDef="let element"> {{element.appointmentType}} </td>
+      </ng-container>
+
+      &lt;!&ndash; Symbol Column &ndash;&gt;
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Статус</th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+
+      </ng-container> <ng-container matColumnDef="acts">
+      <th mat-header-cell *matHeaderCellDef> Дії</th>
+      <td mat-cell *matCellDef="let element"> fdsf </td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="servColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: servColumns;"></tr>
+
+    </table>
+    <mat-paginator  [length]="totalItems"
+                    [pageSize]="pageSize"
+                    [pageIndex]="pageIndex"
+                    (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>
