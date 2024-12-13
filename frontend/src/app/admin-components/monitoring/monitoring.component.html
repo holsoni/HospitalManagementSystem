@@ -1,0 +1,47 @@
+<div class="monitoring-container">
+  <!-- Button to start monitoring -->
+  <div class="monitoring-actions">
+    <button (click)="startMonitoring()" [disabled]="isLoading" class="primary-btn">
+      <span *ngIf="!isLoading">Розпочати моніторинг</span>
+      <span *ngIf="isLoading">Сканування системи...</span>
+    </button>
+  </div>
+
+  <!-- Loading spinner or message -->
+  <div *ngIf="isLoading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Table to display anomalies -->
+  <div *ngIf="!isLoading && anomalies.length > 0" class="table-container">
+    <table class="anomalies-table">
+      <thead>
+      <tr>
+        <th>IP Адреса</th>
+        <th>ID користувача</th>
+        <th>Ймовірність загрози</th>
+        <th>Дії</th> <!-- Actions column -->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let anomaly of anomalies">
+        <td>{{ anomaly.originalIpAddress }}</td>
+        <td>{{ anomaly.originalUser }}</td>
+        <td>{{ anomaly.avgReconstructionError }}</td>
+        <td>
+          <button class="block-btn"
+                  (click)="blockUser(anomaly.originalIpAddress, anomaly.originalUser, anomaly)"
+                  [disabled]="anomaly.isBlocked">
+            {{ anomaly.isBlocked ? 'Заблоковано' : 'Заблокувати' }}
+          </button>
+        </td> <!-- Block button -->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Message when no anomalies are found -->
+  <div *ngIf="!isLoading && anomalies.length === 0" class="no-anomalies">
+    <p>{{ noAnomaliesMessage }}</p>
+  </div>
+</div>

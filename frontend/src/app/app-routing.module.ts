@@ -55,13 +55,15 @@ import {
 import {
   FillMedicalHistoryComponent
 } from "./components/stationar/medicalHistory/fill-medical-history/fill-medical-history.component";
+import {MonitoringComponent} from "./admin-components/monitoring/monitoring.component";
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   {path:'admin', component:AdminDashboardComponent,canActivate:[AdminGuard],
     children:[
-              {path:'doctors',component:DoctorsComponent},
+      { path: 'monitoring', component: MonitoringComponent },  // Route for monitoring
+      {path:'doctors',component:DoctorsComponent},
               {path:'patients',component:PatientsComponent}]},
 
   {path:'workers', component:DoctorsMainComponent,canActivate:[DoctorGuard],

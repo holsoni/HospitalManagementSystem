@@ -1,0 +1,21 @@
+.menu-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+}
+
+.menu-item {
+  background-color: #4c8caf;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #7facc7;
+}

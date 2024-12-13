@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent {
+  constructor(private router: Router) {}
 
+  // Method to navigate to the Monitoring page
+  goToMonitoring() {
+    this.router.navigate(['admin/monitoring']);
+  }
 }

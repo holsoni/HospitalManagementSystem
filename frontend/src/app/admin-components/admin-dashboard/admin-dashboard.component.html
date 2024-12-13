@@ -1,1 +1,10 @@
-<p>admin-dashboard works!</p>
+
+<app-header></app-header> <!-- Include the header component here -->
+<div class="menu-row">
+  <button class="menu-item">Користувачі</button>
+  <button class="menu-item">Менеджери</button>
+  <button class="menu-item">Пацієнти</button>
+  <button class="menu-item">Лікарі</button>
+  <button class="menu-item" (click)="goToMonitoring()">Моніторинг системи</button>
+</div>
+<router-outlet></router-outlet> <!-- This will display the routed components, e.g., app-monitoring -->

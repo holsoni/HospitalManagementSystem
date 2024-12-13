@@ -22,11 +22,10 @@ public class MedicalHistoryController {
     }
 
     @GetMapping("/getById")
-    public MedicalHistory getById(@RequestParam UUID id) {
-        return medicalHistoryService.getById(id);
+    public MedicalHistory getById(@RequestParam String id) {
+        UUID id1 = UUID.randomUUID();
+        return medicalHistoryService.getById(id1);
     }
-
-
 
 
     @PostMapping("/update")

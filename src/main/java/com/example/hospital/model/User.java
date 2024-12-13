@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,8 +21,8 @@ import java.util.*;
 
 public class User  implements UserDetails{
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String username;
     private String password;
 
@@ -32,9 +33,18 @@ public class User  implements UserDetails{
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+    private Long failedLoginAttempts;
+    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'ACTIVE'")
+    private String status;
+    private Long blockByManager;
 
     private Date created_at;
     private Date updated_at;
+
+    public User(long l, String admin) {
+        this.id = l;
+        this.username = admin;
+    }
 
 
     @Override

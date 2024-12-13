@@ -26,7 +26,7 @@ public class UserController {
         return  userRepository.findAll();
     }
     @GetMapping("/user/getById")
-    public Optional<User> getUserById(@RequestParam UUID id) {
+    public Optional<User> getUserById(@RequestParam Long id) {
         return  userRepository.findById(id);
     }
 
@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping(value = "users/delete/{id}")
-    public void deleteUser(@PathVariable UUID id) {
+    public void deleteUser(@PathVariable Long id) {
         this.userRepository.deleteById(id);
     }
 

@@ -37,9 +37,12 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        System.out.println("HANDLING JWT");
+
         http
                 .cors().and().csrf().disable()
-                .authorizeRequests().requestMatchers("/generate-token","/user").permitAll()
+                .authorizeHttpRequests()
+                .requestMatchers("/generate-token", "/user").permitAll() // Open endpoints for token generation
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
                 .requestMatchers("/workers/**").hasAuthority("doctor")
                 .requestMatchers("/adminDashboard/**").hasAuthority("admin")
@@ -48,7 +51,10 @@ public class SecurityConfig {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
+
+        // Ensure the JWT filter is applied before UsernamePasswordAuthenticationFilter
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 

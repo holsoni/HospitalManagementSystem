@@ -50,9 +50,4 @@ public class AppointmentController {
     public int countAllByPatientId(@RequestParam UUID id){
         return appointmentService.countAppointmentByPatientId(id);
     }
-
-
-
-
-
 }

@@ -34,7 +34,6 @@ import { ProfileInfoComponent } from './components/doctor-profile/profile-info/p
 import { MedicalFormsComponent } from './components/doctor-profile/medical-forms/medical-forms.component';
 import {DoctorProfileService} from "./services/doctor-profile/doctor-profile.service";
 import {DoneServicesComponent} from "./components/doctor-profile/done-services/done-services.component";
-import {MatLegacyPaginatorModule} from "@angular/material/legacy-paginator";
 import { ServiceManagementComponent } from './components/service-management/service-management.component';
 import { ClinicServicesComponent } from './components/service-management/clinic-services/clinic-services.component';
 import { ServicesGroupsComponent } from './components/service-management/services-groups/services-groups.component';
@@ -80,6 +79,8 @@ import { ModalFillDiaryComponent } from './components/stationar/modal-fill-diary
 import { ModalSelectBedComponent } from './components/stationar/modal-select-bed/modal-select-bed.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MonitoringComponent } from './admin-components/monitoring/monitoring.component';
+import { AlertDialogComponent } from './admin-components/alert-dialog/alert-dialog.component';
 
 
 @NgModule({
@@ -130,6 +131,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ModalCreateAppHComponent,
     ModalFillDiaryComponent,
     ModalSelectBedComponent,
+    MonitoringComponent,
+    AlertDialogComponent,
 
   ],
     imports: [
